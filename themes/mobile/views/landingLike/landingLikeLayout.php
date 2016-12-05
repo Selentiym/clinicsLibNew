@@ -66,9 +66,12 @@ $("form").not(".ordinary").submit(function(e){
 
     $.post(baseUrl+"/post",$(this).serialize()).done(function(date){
             alert("Ваша заявка успешно принята!");
+            if (!price) {
+                price = 100;
+            }
             if (yaCounter40204894) {
                 yaCounter40204894.reachGoal("formSubmit", {
-                    order_price: 150,
+                    order_price: price,
                     currency: "RUB"
                 });
             } else {
