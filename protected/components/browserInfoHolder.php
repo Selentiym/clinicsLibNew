@@ -26,7 +26,7 @@ class browserInfoHolder {
      * @return null|\UserAgentParser\Model\UserAgent
      */
     public static function getInstance() {
-        if ((self::$result)&&(self::$canGive)) {
+        if (!((self::$result)&&(self::$canGive))) {
 
             $client = new Client([
                 'handler' => HandlerStack::create(new CurlHandler()),
