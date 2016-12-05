@@ -1,0 +1,249 @@
+<div class="row-fluid">
+
+    <div class="form">
+<?php
+		Yii::app()->clientScript->registerScript('paste_script', "
+			function MineOnPaste(plugin, args) {
+				
+				//console.log(tinymce.activeEditor.dom.select('img'));
+				console.log(plugin);
+				console.log(args);
+			}
+		",CClientScript::POS_END);
+?>
+    <?php $form=$this->beginWidget('CActiveForm', array(
+        'id'=>'articles-form',
+        // Please note: When you enable ajax validation, make sure the corresponding
+        // controller action is handling ajax validation correctly.
+        // There is a call to performAjaxValidation() commented in generated controller code.
+        // See class documentation of CActiveForm for details on this.
+        'enableAjaxValidation'=>false,
+    )); ?>
+
+        <div class="span6">
+
+            <?php if(Yii::app()->user->hasFlash('duplicateArticle')): ?>
+                <div class="alert-danger">
+                    <?php echo Yii::app()->user->getFlash('duplicateArticle'); ?>
+                </div>
+            <?php endif; ?>
+            
+            <p class="note"> <?php echo CHtml::encode('Поля с '); ?> <span class="required">*</span> <?php echo CHtml::encode('обязательны для заполнения'); ?></p>
+            
+            <?php echo CHtml::hiddenField('fileUpload', Yii::app()->createUrl("admin/fileUpload")); ?>
+        <div>
+            <?php echo $form->labelEx($model,'name'); ?>
+            <?php echo $form->textField($model,'name',array('size'=>50,'maxlength'=>50)); ?>
+            <?php echo $form->error($model,'name'); ?>
+        </div>
+
+        <div>
+            <?php echo $form->labelEx($model,'verbiage'); ?>
+            <?php echo $form->textField($model,'verbiage',array('size'=>20,'maxlength'=>20)); ?>
+            <?php echo $form->error($model,'verbiage'); ?>
+        </div>
+
+        <div>
+            <?php echo $form->labelEx($model,'title'); ?>
+            <?php echo $form->textField($model,'title',array('size'=>60,'maxlength'=>255)); ?>
+            <?php echo $form->error($model,'title'); ?>
+        </div>
+        
+        <div>
+            <?php echo $form->labelEx($model,'keywords'); ?>
+            <?php echo $form->textField($model,'keywords',array('size'=>60,'maxlength'=>2000)); ?>
+            <?php echo $form->error($model,'keywords'); ?>
+        </div>
+        
+        <div>
+            <?php echo $form->labelEx($model,'description'); ?>
+            <?php echo $form->textField($model,'description',array('size'=>60,'maxlength'=>2000)); ?>
+            <?php echo $form->error($model,'description'); ?>
+        </div>
+
+		<div>
+            <?php echo $form->labelEx($model,'level'); ?>
+            <?php echo $form->dropDownList($model,'level', Articles::model() -> getLevelArray(),
+				array (
+					'ajax' => array (
+						'type'=>'POST',   
+						'dataType'=>'json',  
+						'url'=>Yii::app()->createAbsoluteUrl('admin/ajaxgetparents'),
+						'success'=>'function(data) { 
+							if (data.parentList) { 
+								$("#Articles_parent_id").html(data.parentList);
+								$("#parents_block").show();
+								$("#Articles_parent_id").chosen("destroy");
+								$("#Articles_parent_id").chosen();
+							} 
+							else { 
+								$("#Articles_parent_id").html("<option value =\'0\'></option>");
+								$("#parents_block").hide(); 
+							} 
+						}',  
+				))); //echo CHtml::dropDownList('article_type', 0, $radio_items); ?>
+            <?php echo $form->error($model,'level'); ?>
+        </div>
+		<div id="parents_block" style="display: none;">
+			<?php echo $form->labelEx($model,'parent_id'); ?>  
+			<?php echo $form->dropDownList($model,'parent_id', array()); ?>
+
+			<?php echo $form->error($model,'parent_id'); ?>  
+		</div>
+        <div>
+            <?php echo $form->labelEx($model,'show_objects'); ?>
+            <?php echo CHtml::activeRadioButtonList($model,'show_objects',array(1 => 'Показать', 0 => 'Не показать')); ?>
+            <?php echo $form->error($model,'show_objects'); ?>
+        </div>
+		<div>
+            <?php
+            
+			echo $form->labelEx($model,'trigger_value_id');
+			
+			$triggers = array_merge(array('0'=>''),CHtml::listData(TriggerValues::model()->findAll(), 'id', 'value'));
+			//$triggers = CHtml::listData(TriggerValues::model()->findAll(), 'id', 'value');
+			//print_r($triggers);
+			echo CHtml::activeDropDownList(TriggerValues::model(),'id',$triggers, array('name'=>'triggers_array[]','multiple'=>'multiple','allow_single_deselect'=>'true'),array_map('trim', explode (';', $model->trigger_value_id)));
+            ?>
+		</div>
+		
+        <div>
+            <?php echo $form->labelEx($model,'text'); ?>
+            <div class="controls">
+				<?php echo $form->textArea($model,'text',array()); ?>
+                <?php
+					$this->widget('application.extensions.tinymce.SladekTinyMce'); 
+$dir = '/protected/extensions/tinymce/js/assets';
+//echo $dir;
+        $folder = Yii::app()->assetManager->getPublishedPath($dir);
+				?>
+				<script>
+					tinymce.init({
+						selector:'textarea',
+						'plugins':['advlist autolink lists link image charmap print preview anchor','searchreplace visualblocks code fullscreen','insertdatetime media table contextmenu paste responsivefilemanager'],
+						'paste_word_valid_elements':'p,h1,ul,ol,li,br,img[src],span',
+						'cleanup':true,
+						'valid_elements':'p,ul,ol,li,img[src],a[href],h1,span',
+						//'paste_preprocess':MineOnPaste,
+						//'images_upload_handler':function(a,b,c){console.log(a,b,c);},
+						'toolbar':' code | paste | undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image',
+						external_filemanager_path: "/assets/8eda1553/plugins/filemanager",
+						filemanager_title:"Responsive Filemanager" ,
+						external_plugins: { "filemanager" : "<?php echo $folder ?>/plugins/filemanager/plugin.min.js"}
+					});
+				</script>
+				<?php 
+				/*$this -> widget('application.extensions.tiny2.TinyMCE',
+				array(
+					'model' => $model,
+					'attribute' => 'text',
+					//'name' => 'check',
+					'options' => array(
+						'selector'=> 'textarea',
+						'plugins'=> array(
+							'advlist autolink lists link image charmap print preview anchor',
+							'searchreplace visualblocks code fullscreen',
+							'insertdatetime media table contextmenu paste'
+						),
+						'paste_word_valid_elements' => 'p,h1,ul,ol,li,br,img[src],span',
+						'cleanup'=>true,
+						'valid_elements'=> 'p,ul,ol,li,img[src],a[href],h1,span',
+						//'images_upload_url' => Yii::app() -> createUrl('admin/ImageUpload'),
+						//'paste_remove_styles' => true,
+						//'paste_remove_spans' => true,
+						//'paste_retain_style_properties' => "color font-size",
+						'paste_preprocess' => 'js:MineOnPaste',
+						'images_upload_handler' => 'js:function(a,b,c){console.log(a,b,c);}',
+						'toolbar'=> ' code | paste | undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image',
+						'fileManager' => array(
+                                    'class' => 'application.extensions.elFinder.TinyMceElFinder',
+                                    'popupConnectorRoute' => 'elfinder/elfinderTinyMce', // relative route for TinyMCE popup action
+                                    'popupTitle' => "Files",
+                             ),
+						'external_filemanager_path' => "/protected/extensions/filemanager_for_tiny/",
+						'filemanager_title' => "Responsive Filemanager" ,
+						'external_plugins' => array ( "filemanager" => "/protected/extensions/filemanager_for_tiny/plugin.min.js")
+					)
+				));
+				//*/
+				
+				/* $this->widget('application.extensions.tinymce.TinyMce',
+                    array(
+                        'model'=>$model,
+                        'attribute'=>'text',
+                        //'editorTemplate'=>'full',
+                        'skin'=>'cirkuit',
+                        
+                        //'useCompression'=>false,
+                        'settings'=> array(
+                            'mode' =>"textareas",
+                            'theme' => 'advanced',
+                            'skin' => 'cirkuit',
+                            'theme_advanced_toolbar_location'=>'top',
+                            'plugins' => 'advimage,spellchecker,safari,pagebreak,style,layer,save,advlink,advlist,iespell,inlinepopups,insertdatetime,contextmenu,directionality,noneditable,nonbreaking,xhtmlxtras,template',
+							'paste_remove_styles' => 1,
+							'paste_remove_spans' => 1,
+'paste_text_sticky' => true,
+'paste_text_sticky_default' => true,
+//'valid_elements' => 'p',
+'paste_auto_cleanup_on_paste' => true,
+							'paste_word_valid_elements' => "p",
+        'theme_advanced_buttons1' => "save,newdocument,|,bold,italic,underline,strikethrough,|,justifyleft,justifycenter,justifyright,justifyfull,styleselect,formatselect,fontselect,fontsizeselect",
+        'theme_advanced_buttons2' => "cut,copy,paste,pastetext,|,search,replace,|,bullist,numlist,|,outdent,indent,blockquote,|,undo,redo,|,link,unlink,anchor,image,cleanup,help,code,|,insertdate,inserttime,preview,|,forecolor,backcolor",
+        //'theme_advanced_buttons2' => "paste,pastetext",
+        'theme_advanced_buttons3' => "tablecontrols,|,hr,removeformat,visualaid,|,sub,sup,|,charmap,emotions,iespell,media,advhr,|,print,|,ltr,rtl,|,fullscreen,spellchecker",
+        //'theme_advanced_buttons4' => "pasteword",
+        'theme_advanced_buttons4' => "insertlayer,moveforward,movebackward,absolute,|,styleprops,|,cite,abbr,acronym,del,ins,attribs,|,visualchars,nonbreaking,template,pagebreak",
+'paste_preprocess' => 'function (plugin, arg ) {
+	alert("preprocess");
+	allow = "<div><p><ul><li><ol><br>";
+	str = arg.content;
+  allow = (((allow || "") + "").toLowerCase().match(/<[a-z][a-z0-9]*>/g) || []).join("");
+
+  var tags = /<\/?([a-z][a-z0-9]*)\b[^>]*>/gi;
+  var commentsAndPhpTags = /<!--[\s\S]*?-->|<\?(?:php)?[\s\S]*?\?>/gi;
+  return str.replace(commentsAndPhpTags, "").replace(tags, function ($0, $1) {
+    return allow.indexOf("<" + $1.toLowerCase() + ">") > -1 ? $0 : "";
+  });
+}',
+                            //'theme_advanced_buttons1' => 'formatselect,forecolor,|,bold,italic,strikethrough,|,bullist,numlist,|,justifyleft,justifycenter,justifyright,justifyfull,|,link,unlink,image',
+                            //'theme_advanced_buttons2' => '',
+                            //'theme_advanced_buttons3' => '',
+                            //'theme_advanced_buttons4' => 'pasteword',
+                            'theme_advanced_toolbar_location' => 'top',
+                            'theme_advanced_toolbar_align' => 'left',
+                            'theme_advanced_statusbar_location' => 'bottom',
+                            'theme_advanced_resizing_min_height' => 30,
+                            'height' => 300,
+                            //'file_browser_callback' => 'openmanager',
+                            //'open_manager_upload_path' => CHtml::encode(Yii::app()->basePath) . '/../images/uploads/',
+                            //'relative_urls' => false,
+                            
+                        ),
+                        
+                        'fileManager' => array(
+                                    'class' => 'application.extensions.elFinder.TinyMceElFinder',
+                                    'popupConnectorRoute' => 'elfinder/elfinderTinyMce', // relative route for TinyMCE popup action
+                                    'popupTitle' => "Files",
+                             ), 
+                        'htmlOptions'=>array('rows'=>5, 'cols'=>30, 'class'=>'tinymce'),
+                    )); */?>
+
+                        
+            </div>
+            <?php echo $form->error($model,'text'); ?>
+        </div>
+		<div class="buttons">
+            <?php echo CHtml::submitButton($model->isNewRecord ? CHtml::encode('Создать') : CHtml::encode('Сохранить')); ?>
+        </div>
+        <!-- Выводим генератор для search_id -->
+		<?php  $this -> renderPartial('//searchid/triggerForm', array('id' => 'search_id_generator'))?>
+        <br/>
+        
+
+    <?php $this->endWidget(); 
+
+	?>
+    </div>
+    </div><!-- form -->
+</div>

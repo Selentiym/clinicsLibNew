@@ -1,0 +1,107 @@
+/* Page Parameters */
+
+body {padding-top: 0!important; }
+/* Header */
+.page-header{
+    margin: 0;
+    border: none;
+    height: auto;
+}
+
+/* Top menu */
+.navbar { background: url("../images/header-bg.jpg") repeat-x; }
+
+/* Main Content Container */
+/*.container { width: auto; margin: 10px; } */
+.shifted {margin-left: 40px; }
+.bottomed {margin-bottom: 1px; }
+.topped {margin-top: 20px; }
+
+.topped a.btn {width: 70%; }
+/* Leftside Menu */
+
+#leftside{
+    display: block;
+    overflow: hidden;
+    line-height: 1.5em;
+}
+
+#leftside ul{
+    display: block;
+    font-size: 12px;
+    width: 250px;
+    float: left;
+    margin-left: 30px;
+    margin-bottom: 30px;
+}
+
+#leftside-cols ul>h5{
+    margin-top: 30px;
+    margin-bottom: 20px;
+}
+
+#leftside-cols li.clear-col{ clear:left; }
+
+#leftside-cols ul{
+    display: block;
+}
+
+#leftside-cols ul li{
+    display: block;
+    line-height: 1.7em;
+}
+
+
+#leftside-cols ul li.page_item{
+    display: block;
+    line-height: 2.5em;
+    padding-left: 17px;
+    border-top: 1px solid #4a4a4a;
+    border-bottom: 1px solid #000;
+    background: url("../images/footer-bullet.png") no-repeat 0px 10px;
+}
+
+#leftside-cols ul li:first-child{ border-top: none; }
+
+#leftside-cols ul li:last-child{ border-bottom: none; }
+
+#leftside-cols ul li a{
+    text-decoration: none;
+}
+
+
+/* Search Form */
+
+#search {margin-bottom: 25px; border-bottom-right-radius: 4px;  border-bottom-left-radius: 4px; border: 1px solid #ddd; padding-top:10px; padding-bottom: 10px; padding-left: 5px; padding-right: 5px;}
+
+#search .title { font-size: 20px; font-weight: bolder}
+
+#search .help-tip { height: auto; float: right; margin-left: 100px; text-align: justify; }
+
+#search .search-form select { width: auto; margin-right: 6px; }
+
+/* Clinic widget/card */
+
+.short {margin-bottom: 10px; }
+
+.thumbnail .logo img {padding-left: 10px;  max-width: 90px; }
+
+.left-pane {width: 75%; }
+
+.details {width: 82%; }
+
+
+/* Clinic extended view */
+
+.extended {margin-left: 10px; margin-right: 10px; }
+
+.gallery {width: 100%; }
+
+.extended .details {width: 48%; }
+
+
+.col-md-3 {
+    width: 30%;
+    text-align: center;
+    margin: 5px;
+}

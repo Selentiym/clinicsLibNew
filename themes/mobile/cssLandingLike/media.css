@@ -1,0 +1,326 @@
+/*==========  Desktop First Method  ==========*/
+
+/* Large Devices, Wide Screens */
+@media only screen and (max-width : 1200px) {
+	a.logo > span {
+		font-size: 12px;
+	}
+	.main_menu a {
+		font-size: 13px;
+	}
+	.main_menu ul li.our-phone .menu-title {
+		font-size: 21px;
+	}
+	.main_menu ul li span.menu-title {
+		font-size: 14px;
+	}
+	.main_menu ul li.top-phone img,
+	.main_menu ul li.discount-sale img{
+		visibility:hidden;
+	}
+	.main_menu ul li.discount-sale a {
+		padding: 15px 7px 14px 7px;
+	}
+	.advantages .col-md-3 {
+		text-align: center;
+	}
+	.advantages img {
+		float: none !important;
+		margin: 0 auto 10px auto;
+	}
+	.advantages span {
+		display: block;
+		vertical-align: middle;
+		text-align: center;
+		font-size: 13px;
+	}
+	.discount-offers .discount-inner .discount-name  {
+		padding-top:10px;
+	}
+	.discount-offers .discount-inner:last-child  .discount-name,
+	.discount-offers .discount-inner:last-child  .discount-price .new-price {
+		padding-top:25px;
+	}
+	.discount-offers .discount-button {
+		padding-top:10px;
+	}
+	.doctor {
+		min-height:450px;
+	}
+	#assignBottom {
+		width:293px !important;
+	}
+}
+
+/* Medium Devices, Desktops */
+@media only screen and (max-width : 992px) {
+	.header_topline{
+		position:fixed;
+		float:none;
+		margin:0 auto;
+		width:100%;
+	}
+	.aside-block {
+		margin-top:100px;
+	}
+	a.logo > span {
+		font-size: 16px;
+	}
+	/*
+	nav.main_menu ul {
+		display: none;
+		position: absolute;
+		width: 400%;
+		right: 0;
+		top: 74px;
+		background: #565656;
+		text-align:center;
+		border-radius:0 0 5px 5px;
+	}
+	nav.main_menu ul li {
+		display: block;
+		width:100%;
+	}
+	nav.main_menu ul li.discount{
+		width:100%;
+	}
+	nav.main_menu ul li.discount a{
+		background: none;
+		text-align: center;
+		padding-left:10px;
+	}
+	nav.main_menu ul li.discount i{
+		display:inline-block;
+	}
+	nav.main_menu a{
+		background:none;
+		text-align: center;
+		border-top: 1px solid #777;
+	}
+
+	nav.main_menu a:hover, nav.main_menu ul li.discount a:hover{
+		background:#053054;
+		border-radius:0 0 5px 5px;
+	}
+	.main_menu ul li.top-phone img,
+	.main_menu ul li.discount-sale img{
+		visibility:visible;
+	}
+	.main_menu ul li span.menu-desc,nav.main_menu ul li.discount a img{
+		display:none;
+	}
+	.main_menu ul li span.menu-title {
+		font-size: 15px;
+	}
+	*/
+	.banner .left-images-block div {
+		padding: 100px 200px 20px 50px; 
+	}
+	.banner .left-images-block:nth-child(5) div {
+		padding: 100px 50px 60px 50px; 
+	}
+	.banner .left-images-block:nth-child(2) div {
+		padding: 30px 50px 30px 50px;
+	}
+	.banner .left-images-block div p {
+		padding:0 20px;
+	}
+	.advantages .col-md-3 {
+		float:left;
+	}
+	.doctor {
+		min-height:390px;
+	}
+	#assignBottom {
+		position:static !important;
+		width:auto !important;
+		top: 83px;
+	}
+}
+
+/* Small Devices, Tablets */
+@media only screen and (max-width : 768px) {
+	h1{
+		font-size:23px;
+	}
+	h2 a {
+		font-size: 19px;
+		margin-bottom:10px;
+	}
+	.main_page .center-phone,.main_page  .center-address,.main_page  .center-hours,.main_page  .center-prices,.main_page  .center-stars{
+		margin-left:30px;
+	}
+	.discount-offers .discount-inner .discount-name,
+	.discount-offers .discount-inner:last-child  .discount-name,
+	.discount-offers .discount-inner .discount-price .new-price,
+	.discount-offers .discount-inner:last-child  .discount-price .new-price {
+		padding-top:10px;
+	}
+	.discount-offers .discount-button {
+		padding-top:0;
+	}
+	.doctor {
+		min-height:271px;
+	}
+}
+
+@media only screen and (max-width : 600px) {
+	.view-block{
+		display:none;
+	}
+	.clinic.row .col-xs-2{
+		padding:0;
+	}
+	.clinic.row .col-xs-4, .clinic.row .col-xs-8{
+		width:100%;
+	}
+	.main_page a.to_sign, .list-page a.to_sign{
+		margin:0 0 20px 0;
+		float: right;
+	}
+	.clinic-h1 {
+		height:auto;
+	}
+	.advantages .col-md-3 {
+		width:30%;
+	}
+	.advantages .col-md-3:nth-child(2) {
+		width:40%;
+	}
+	.advantages .col-md-3:nth-child(4) {
+		width:100%;
+		margin-top:30px;
+	}
+	.banner .left-images-block  button {
+		position:absolute;
+		top:35%;
+		right:30%;
+		width:auto;
+	}
+	.doctor {
+		min-height:350px;
+	}
+}
+@media only screen and (max-width : 528px) {
+	a.logo > span {
+		font-size: 14px;
+	}
+	.banner .left-images-block div {
+		padding: 70px 80px 0 20px; 
+	}
+	.banner .left-images-block:nth-child(5) div {
+		padding: 70px 20px 60px 20px; 
+	}
+	.banner .left-images-block:nth-child(2) div {
+		padding: 30px 50px 30px 20px;
+	}
+	.banner .left-images-block div p {
+		padding:0 20px;
+	}
+	.doctor {
+		min-height:360px;
+	}
+}
+/* Extra Small Devices, Phones */
+@media only screen and (max-width : 480px) {
+	a.logo > span {
+		font-size: 10px;
+	}
+	.discount-inner{
+		padding-left: 30px;
+	}
+	.discount-inner div{
+		float:none;
+		width:100%;
+		margin:5px auto;
+	}
+	a.logo img{
+		margin-right:0;
+	}
+	.search  .search-input{
+		width:80%;
+	}
+	.clinic-page .prices .tab_container table td.price-name {
+		min-width: 10px;
+	}
+	.clinic-page .prices .tab_container table td.price-name span {
+		background: #ffffff;
+		color: #17191b;
+		padding-bottom: 10px;
+	}
+	.tab_container {
+		padding: 0 20px 10px 20px;
+		width:100%;
+		display:block;
+	}
+	.clinic-page .prices .tab_container table th, 
+	.clinic-page .prices .tab_container table th.kt {
+		font-size: 20px;
+	}
+	.clinic-page .prices .tab_container table td  {
+		font-size: 16px;
+	}
+	.discount-offers .discount-inner .discount-name,
+	.discount-offers .discount-inner:last-child  .discount-name,
+	.discount-offers .discount-inner .discount-price .new-price,
+	.discount-offers .discount-inner:last-child  .discount-price .new-price {
+		text-align:center;
+	}
+	.banner .left-images-block div {
+		padding: 20px 80px 0 20px; 
+	}
+	.banner .left-images-block:nth-child(5) div {
+		padding: 20px 20px 60px 20px; 
+	}
+	.banner .left-images-block:nth-child(2) div {
+		padding: 20px 50px 30px 20px;
+	}
+	.banner .left-images-block div p {
+		padding:0 20px;
+	}
+	.doctor {
+		min-height:300px;
+		border:none;
+	}
+}
+@media only screen and (max-width : 360px) {
+	.doctor {
+		min-height:200px;
+		border:none;
+	}
+}
+/* Custom, iPhone Retina */
+@media only screen and (max-width : 320px) {
+	a.logo > span {
+		font-size: 9px;
+	}
+	.flip-clock-wrapper ul {
+		width:23px;
+	}
+}
+
+
+/*==========  Mobile First Method  ==========*/
+
+/* Custom, iPhone Retina */
+@media only screen and (min-width : 320px) {
+
+}
+
+/* Extra Small Devices, Phones */
+@media only screen and (min-width : 480px) {
+
+}
+
+/* Small Devices, Tablets */
+@media only screen and (min-width : 768px) {
+}
+
+/* Medium Devices, Desktops */
+@media only screen and (min-width : 992px) {
+}
+
+/* Large Devices, Wide Screens */
+@media only screen and (min-width : 1200px) {
+
+}

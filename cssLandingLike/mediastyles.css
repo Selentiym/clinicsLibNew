@@ -1,0 +1,149 @@
+/*==========  Desktop First Method  ==========*/
+
+/* Medium Devices, Desktops */
+@media only screen and (max-width : 992px) {
+	.media-screen marquee {
+		color:#8bc944;
+		font-weight:bold;
+		margin:-10px 0;
+	}
+	.main_menu ul li.discount-sale a {
+		padding: 15px 7px 14px 50px;
+		font-size: 15px;
+	}
+	.main_menu ul li.top-phone img {
+		position: absolute;
+		left: 5px;
+		top: 20px;
+		visibility:visible;
+	}
+	.media-screen .left-images-block .order-form {
+		margin: 20px -20px -20px -20px;
+		border-radius: 0 0 5px 5px;
+	}
+	.media-screen .left-images-block p {
+		padding:0;
+		margin:0;
+		text-align:center;
+	}
+	.media-screen #collapse .btn-primary {
+		background: #f8fcff;
+		color:#4b4b4b;
+		border: 1px solid #c6dcf0;
+		border-radius: 5px;
+		width: 31.5%;
+		padding:7px 0;
+		margin-right:15px;
+		text-align: center;
+		font-size: 23px;
+		outline:none;
+		text-transform:uppercase;
+	}
+	.media-screen #collapse .btn-primary.last {
+		margin-right:0;
+		float:right;
+	}
+	.media-screen #collapse .btn-primary:focus {
+		background:#ffffff;
+		border-radius: 5px 5px 0 0;
+		border-bottom:1px solid #ffffff;;
+	}
+	.media-screen #collapse .tab_container {
+		border-top:1px solid #c6dcf0;
+		background:#ffffff;
+		margin-top:-1px;
+		margin-bottom:20px;
+	}
+	.media-screen #collapse .tab_container table th,
+	.media-screen #collapse .tab_container table th.kt {
+		background:#ffffff;
+		border-bottom:1px solid #c6dcf0;
+		padding:40px 0 10px 0;
+		color:#448bc9;
+		font-size: 28px;
+		text-align:left;
+	}
+	.media-screen #collapse .tab_container table td{
+		padding:5px 0;
+		vertical-align:bottom;
+	}
+	.media-screen #collapse .tab_container table tr.padding-top td {
+		padding-top:20px;
+	}
+	.media-screen #collapse .tab_container table tr {
+		background:#ffffff;
+	}
+	.media-screen #collapse .tab_container table tr td {
+		border:none;
+	}
+	.media-screen #collapse .tab_container table td.price-name {
+		vertical-align: bottom;
+		background: url(../imgLandingLike/tbl-dot.png) repeat-x 100% 90%;
+	}
+	.media-screen #collapse .tab_container table td.price-name span {
+		background: #ffffff;
+		color: #17191b;
+		padding-bottom: 10px;
+		padding-right: 10px;
+	}
+	.media-screen .banner .left-images-block {
+		margin:15px 0;
+	}
+	.media-screen #collapse .tab_container table tr td:nth-child(2) {
+		color: #448bc9;
+		font-weight: bold;
+		font-style: italic;
+		font-size: 18px;
+		width: 150px;
+		text-align: center;
+	} 
+	.media-screen .banner  .col-sm-6:nth-child(2) .left-images-block,
+	.media-screen .banner  .col-sm-6:nth-child(4) .left-images-block {
+		border-color: #4b4b4b !important;
+	}
+	.media-screen .banner .left-images-block {
+		background:linear-gradient(135deg, rgba(248,252,255,1) 0%,rgba(255,255,255,0.5) 50%,rgba(255,255,255,0) 100%);
+	}
+	.media-screen .banner .left-images-block div {
+		padding:0px !important;
+		margin:0 !important;
+		background:none;
+		min-height:130px;
+	}
+	.media-screen .banner  .col-sm-6:nth-child(3) .left-images-block div,
+	.media-screen .banner  .col-sm-6:nth-child(4) .left-images-block div {
+		min-height:196px;
+	}
+}
+
+/* Small Devices, Tablets */
+@media only screen and (max-width : 768px) {
+	.media-screen #collapse .btn-primary {
+		width: 31.5%;
+		font-size:15px;
+	}
+	.main_menu ul li.discount-sale a {
+		padding: 8px 7px 8px 50px;
+	}
+}
+@media only screen and (max-width : 738px) {
+	.media-screen .banner .left-images-block div {
+		min-height:160px;
+	}
+}
+@media only screen and (max-width : 660px) {
+	.media-screen .banner  .col-sm-6  {
+		width:100%;
+	}
+	.media-screen .banner .left-images-block  {
+		min-height:auto;
+	}
+	.media-screen #collapse .btn-primary {
+		width: 30%;
+	}
+	.media-screen .banner .left-images-block div,
+	.media-screen .banner  .col-sm-6:nth-child(3) .left-images-block div,
+	.media-screen .banner  .col-sm-6:nth-child(4) .left-images-block div 	{
+		min-height:auto;
+	}
+}
