@@ -56,7 +56,7 @@ class HomeController extends Controller
 			$chosen = true;
 		}
 		if ((!$theme)&&(!$chosen)) {
-			$theme = Yii::app()->request->cookies ['theme'];
+			$theme = Yii::app()->request->cookies ['theme'] -> value;
 		}
 		if ((!$theme)&&(!$chosen)) {
 			$res = browserInfoHolder::getInstance();
