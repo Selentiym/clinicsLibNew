@@ -27,22 +27,22 @@ class browserInfoHolder {
      */
     public static function getInstance() {
         if (!((self::$result)&&(self::$canGive))) {
-
-            $client = new Client([
+            self::$result = new Mobile_Detect();
+            self::$canGive = true;
+            /*$client = new Client([
                 'handler' => HandlerStack::create(new CurlHandler()),
             ]);
 
             $provider = new UserAgentStringCom($client);
 
             try {
-                /* @var $result \UserAgentParser\Model\UserAgent */
                 $result = $provider->parse($_SERVER['HTTP_USER_AGENT']);
                 self::$canGive = true;
                 self::$result = $result;
             } catch (NoResultFoundException $ex) {
                 // nothing found
                 return null;
-            }
+            }*/
         }
         return self::$result;
     }

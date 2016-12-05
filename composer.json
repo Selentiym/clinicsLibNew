@@ -4,7 +4,8 @@
     "google/apiclient":">=1",
     "PHPMailer/PHPMailer":"*",
     "getjump/vk":"*",
-    "thadafinser/user-agent-parser": "^1.5"
+    "thadafinser/user-agent-parser": "^1.5",
+    "mobiledetect/mobiledetectlib": "^2.8"
   },
   "repositories": [
     {
