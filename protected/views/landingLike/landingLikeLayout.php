@@ -409,7 +409,7 @@ Yii::app() -> getClientScript() -> registerScript('defaultPositions','
                 <div class="row">
                     <div class="col-md-12">
                         <div class="discount sale">
-                            <h2 class="discount-title">Скидка 50%</h2>
+                            <h2 class="discount-title">Скидка ночью 50%</h2>
                             <p>на МРТ или КТ исследование</p>
                             <p>до конца акции осталось:</p>
                             <div class="container_countdown">

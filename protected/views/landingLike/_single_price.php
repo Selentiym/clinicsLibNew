@@ -17,6 +17,6 @@ if (!$coeff) { $coeff = 1; }
 
 <tr <?php if ($num == 1) { echo 'class="padding-top"'; } ?>>
     <td class="price-name"><span><?php echo $price->text; ?></span></td>
-    <td class="price-new"><?php echo round($basePrice * $coeff / 100) * 100; ?>р.</td>
-    <td class="price-old"><?php echo round($basePrice * $coeff * $oldCoeff / 100) * 100; ?>р.</td>
+    <td class="price-new"><?php echo round($basePrice * $coeff / 1) * 1; ?>р.</td>
+    <td class="price-old"><?php echo round($basePrice * $coeff * $oldCoeff / 1) * 1; ?>р.</td>
 </tr>
