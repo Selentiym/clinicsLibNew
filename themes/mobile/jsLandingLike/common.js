@@ -74,4 +74,4 @@ $(document).ready(function() {
     //Попап менеджер FancyBox
     //Документация: http://fancybox.net/howto
     $(".fancybox").fancybox();
-}
+});
