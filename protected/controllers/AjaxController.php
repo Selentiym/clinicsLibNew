@@ -6,6 +6,9 @@ class AjaxController extends Controller
 		$this -> renderPartial('//landingLike/commentsPage',['page' => $_POST['currentPage'], 'objectInfo' => $_POST['objectInfo']]);
 	}
 
+	public function actionPost(){
+		$this -> renderPartial('//home/post');
+	}
 	// Uncomment the following methods and override them if needed
 	/*
 	public function filters()

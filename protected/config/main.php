@@ -158,6 +158,7 @@ return array(
 				'tracker' => 'tracker',
 				'<seed:(clinics|faq|discount|prices|reviews)>' => 'home',
 				'<modelName:(clinics)>/comment' => 'home/comment',
+				'post' => 'ajax/post',
 				'<action:(getClinicTopInfo|getClinicBottomInfo|comment|post)>' => 'home/<action>',
 				'<action:(getClinicTopInfo|getClinicBottomInfo|comment|post)>/<id:\d+>' => 'home/<action>',
 				'home/<action:(getClinicTopInfo|getClinicBottomInfo|comment|post)>' => 'home/<action>',

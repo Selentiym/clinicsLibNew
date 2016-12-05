@@ -637,9 +637,6 @@ class HomeController extends Controller
 	public function actionDiscount(){
 		$this -> render('//home/discount');
 	}
-	public function actionPost(){
-		$this -> renderPartial('//home/post');
-	}
 	public function actionImportClinics(){
 		$conn = MysqlConnect::getConnection();
 		$q = mysqli_query($conn,'SELECT `clinic`.* FROM `clinic`');
