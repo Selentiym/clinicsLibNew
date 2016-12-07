@@ -1642,7 +1642,7 @@ POP FORM
 	max-width:500px;
 	padding:20px;
 }
-.pop_form input[type="text"] {
+.pop_form input[type="text"], .pop_form input[type="tel"] {
 	display:block;
     padding: 10px;
     background: #ffffff;
