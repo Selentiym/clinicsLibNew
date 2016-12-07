@@ -13,6 +13,7 @@
  */
 class PriceBlock extends CActiveRecord
 {
+	private $_orderedPrices;
 	/**
 	 * @return string the associated database table name
 	 */
@@ -114,5 +115,22 @@ class PriceBlock extends CActiveRecord
 			return $text;
 		}
 		return $text;
+	}
+
+	/**
+	 * @param Price[] $prices
+	 */
+	public function setOrderedPrices($prices) {
+		$this -> _orderedPrices = $prices;
+	}
+
+	/**
+	 * @return Price[]
+	 */
+	public function getOrderedPrices() {
+		if (!isset($this -> _orderedPrices)) {
+			$this -> _orderedPrices = $this -> prices;
+		}
+		return $this -> _orderedPrices;
 	}
 }

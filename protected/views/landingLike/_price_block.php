@@ -19,13 +19,16 @@ if ($count == 0) {
     <th colspan="3"><?php echo $blockName; ?></th>
 </tr>
 <?php
+
+    $prices = $block -> getOrderedPrices();
+
     $experiment = Yii::app() -> getModule('tracker') -> enter -> getExperiment();
     /**
      * @type iExperiment $experiment
      */
     $coeff = $experiment -> getProperty('price');
     $num = 0;
-    foreach ($block -> prices as $price) {
+    foreach ($prices as $price) {
         $num++;
         $this -> renderPartial('//landingLike/_single_price',['price' => $price, 'num' => $num, 'coeff' => $coeff]);
     }

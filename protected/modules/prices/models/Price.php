@@ -12,6 +12,7 @@
  */
 class Price extends UModel
 {
+	private $_highlight = false;
 	/**
 	 * @return string the associated database table name
 	 */
@@ -103,5 +104,19 @@ class Price extends UModel
 	public static function model($className=__CLASS__)
 	{
 		return parent::model($className);
+	}
+
+	/**
+	 * @param bool $val
+	 */
+	public function setHightlight($val = true) {
+		$this -> _highlight = $val;
+	}
+
+	/**
+	 * @return bool
+	 */
+	public function getHighlight(){
+		return $this -> _highlight;
 	}
 }

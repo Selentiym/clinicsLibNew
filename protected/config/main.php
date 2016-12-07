@@ -57,6 +57,9 @@ return array(
 			//'spreadsheet' => 'Copy of СТАТИСТИКА СПб'
 			'spreadsheet' => 'СТАТИСТИКА СПб'
 		],
+		'prices' => [
+			'class' => 'application.modules.prices.PricesModule'
+		],
         /*
 		'user'=>array(
 			'hash' => 'md5',

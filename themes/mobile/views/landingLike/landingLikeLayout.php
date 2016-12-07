@@ -364,7 +364,7 @@ Yii::app() -> getClientScript() -> registerScript('defaultPositions','
         <p>Специалист-диагност подберет Вам подходящую клинику и наилучшую цену, а также запишет на обследование в удобное для Вас время.</p>
         <p>Ответит на все вопросы, связанные с МРТ и КТ диагностикой.</p>
         <input type="text" class="your-name" name="name" placeholder="Ваше имя..." required />
-        <input type="text" class="your-phone" name="phone" placeholder="Ваше телефон..." required />
+        <input type="tel" class="your-phone" name="phone" placeholder="Ваше телефон..." required />
         <button class="order-button" name="your-name" value="" type="submit">Записаться</button>
     </form>
 </div>
