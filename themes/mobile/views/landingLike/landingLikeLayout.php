@@ -234,7 +234,9 @@ Yii::app() -> getClientScript() -> registerScript('defaultPositions','
                                     //$c -> renderPartial()
                                     $this -> renderPartial('//landingLike/clinicsBottom',['showAll' => 1, 'model' => clinics::model() -> find()]);
                                     ?>
+									<div class="clear"></div>
                                 </div>
+								<div class="clear"></div>
                             </div>
                         </div>
 
