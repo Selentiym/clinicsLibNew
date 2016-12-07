@@ -30,8 +30,10 @@ class PricesModule extends CWebModule
 			//Перемещаем блоки с нужными ценами в начало массива
 			$block = $price -> block;
 			$key = array_search($block, $blocks);
-			array_splice($blocks,$key,1);
-			array_unshift($blocks,$block);
+			if ($key) {
+				array_splice($blocks, $key, 1);
+				array_unshift($blocks, $block);
+			}
 		}
 		$highlight = array_reverse(CHtml::giveAttributeArray($this -> rule -> prices, 'id'));
 		//Теперь перемещаем цены внутри блоков
