@@ -2,6 +2,8 @@
  * Created by user on 10.11.2016.
  * @require jQuery
  */
+//Дефолтная цена цели
+var price = 200;
 function bind(func, context) {
     return function() {
         return func.apply(context, arguments);
