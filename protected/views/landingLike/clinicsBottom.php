@@ -45,7 +45,7 @@ Yii::app() -> getClientScript() -> registerScript('toggleMoreReviews','
 				<span class="wcomments_count _wcomments_count">
 					<?php
                     if ($showAll) {
-                        $toShow = Comments::model() -> findAllByAttributes(['approved' => 1]);
+                        $toShow = Comments::model() -> findAllByAttributes(['approved' => 1],['order' => 'num ASC']);
                     } else {
                         $toShow = $model->approved_comments;
                     }
