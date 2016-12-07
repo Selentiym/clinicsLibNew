@@ -60,6 +60,12 @@ abstract class aEnterFactory {
         return static::$_enterFactory;
     }
 
+    public static function setEnterFactory(aEnterFactory $factory){
+        if ($factory) {
+            static::$_enterFactory = $factory;
+        }
+    }
+
     /**
      * @param CallTrackerModule $module
      */

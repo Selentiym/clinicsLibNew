@@ -1,6 +1,10 @@
 <?php
 class CallTrackerModule extends \CWebModule
 {
+	/**
+	 * @var callable $afterImport
+	 */
+	public $afterImport;
 	public $formatNumber;
 	/**
 	 * @var CallTrackerModule
@@ -40,6 +44,11 @@ class CallTrackerModule extends \CWebModule
 		));
 
 		self::$lastInstance = $this;
+
+		//call a client-code function to set some non-trivial configurations
+		if (is_callable($this -> afterImport)) {
+			call_user_func($this -> afterImport, $this);
+		}
 
 		//Если не нужно выдвать номер
 		if ($_GET['nonumber'] != 'off') {
