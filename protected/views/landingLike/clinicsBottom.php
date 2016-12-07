@@ -45,7 +45,10 @@ Yii::app() -> getClientScript() -> registerScript('toggleMoreReviews','
 				<span class="wcomments_count _wcomments_count">
 					<?php
                     if ($showAll) {
-                        $toShow = Comments::model() -> findAllByAttributes(['approved' => 1],['order' => 'num ASC']);
+                        $crit = new CDbCriteria();
+                        $crit -> compare('approved',1);
+                        $crit -> order = 'num DESC';
+                        $toShow = Comments::model() -> findAll($crit);
                     } else {
                         $toShow = $model->approved_comments;
                     }

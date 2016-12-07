@@ -7,7 +7,7 @@ $pageSize = 5;
 if ($model) {
     $reviews = $model->approved_comments;
 } else {
-    $reviews = Comments::model() -> findAllByAttributes(['approved' => 1]);
+    $reviews = Comments::model() -> findAllByAttributes(['approved' => 1],['order' => 'num DESC']);
 }
 
 $showButton = $page < (ceil(count($reviews) / $pageSize) - 1);
