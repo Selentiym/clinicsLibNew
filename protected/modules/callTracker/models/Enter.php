@@ -125,7 +125,7 @@ class Enter extends aEnter
 		];
 	}
 
-	protected function beforeSave() {
+	protected function beforeValidate() {
 		//Ради того, чтобы всегда в базе хранилось php-шное время!
 		if ($this -> getIsNewRecord()) {
 			$this -> created = date('Y-m-d H:i:s',time());

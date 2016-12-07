@@ -10,6 +10,7 @@
  * @property string $date
  */
 class GlobalExperiment extends CActiveRecord implements iExperiment {
+	//public $phone;
 	/**
 	 * @return string the associated database table name
 	 */
@@ -109,7 +110,7 @@ class GlobalExperiment extends CActiveRecord implements iExperiment {
 			$prices = [1.0];
 			$params = [
 				'price' => $prices[array_rand($prices)],
-				'phone' => $enter -> getNumber() -> getShortNumberString()
+				//'phone' => $enter -> getNumber() -> getShortNumberString()
 			];
 			$this -> attributes = $params;
 			if (is_a($enter, 'aEnter')) {

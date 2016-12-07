@@ -71,7 +71,7 @@ class CallTrackerModule extends \CWebModule
 
 		$enter = $enter -> collectDataFromRequest();
 
-		$enter -> obtainNumber();
+		$num = $enter -> obtainNumber();
 
 		$this -> enter = $enter;
 
