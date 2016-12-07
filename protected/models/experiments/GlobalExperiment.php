@@ -108,12 +108,14 @@ class GlobalExperiment extends CActiveRecord implements iExperiment {
 			//$prices = [0.8, 0.9, 1.0];
 			$prices = [1.0];
 			$params = [
-					'price' => $prices[array_rand($prices)]
+				'price' => $prices[array_rand($prices)],
+				'phone' => $enter -> getNumber() -> getShortNumberString()
 			];
 			$this -> attributes = $params;
 			if (is_a($enter, 'aEnter')) {
 				$this->id_enter = $enter->id;
 			}
+
 		}
 	}
 	public function getParams() {
