@@ -133,6 +133,7 @@ class phNumber extends aNumber
 					LIMIT 1
 					) IS NULL
 					AND `n`.`reserved` = '0'
+					AND `n`.`noCarousel` = '0'
 				";
 		$ids = Yii::app() -> db -> createCommand($freestSql) -> queryColumn();
 		if (count($ids) == 0) {

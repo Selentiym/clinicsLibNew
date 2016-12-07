@@ -29,7 +29,7 @@ class EnterFactory extends aEnterFactory {
         }
         //Если не найден заход, то создаем его заново
         if (!is_a($enter, 'aEnter')) {
-            $enter = new Enter();
+            $enter = $this -> buildNew();
         }
         return $enter;
     }

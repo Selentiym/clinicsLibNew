@@ -24,7 +24,7 @@ return array(
 		'application.components.*',
 		'application.extensions.EchMultiSelect.*',
 		'application.extensions.geo.*',
-		'application.components.googleDoc.*',
+		'application.components.callTrackerCustom.*',
 		'application.models.prices.*',
 		'application.models.experiments.*',
 		'application.modules.callTracker.*',
@@ -50,6 +50,9 @@ return array(
 				$fDouble = substr($number, 7, 2);
 				$sDouble = substr($number, 9, 2);
 				return "8($code)$triple-$fDouble-$sDouble";
+			},
+			'afterImport' => function($module){
+				aEnterFactory::setEnterFactory(new CustomEnterFactory($module));
 			}
 		],
 		'googleDoc' =>[

@@ -175,7 +175,7 @@ class Enter extends aEnter
 	/**
 	 * @return bool
 	 */
-	private function needsNumber() {
+	protected function needsNumber() {
 		//Чтобы корректно обрабатывался случай unset number.
 		if (is_a($this -> getNumber(), self::NUMBER_CLASS)) {
 			return !$this -> id;
