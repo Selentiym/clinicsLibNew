@@ -25,3 +25,18 @@ function loadClinicInfo(id) {
         });
     }
 }
+function clinicsAddNextClosureFactory(ids){
+    var ind;
+    if (ids.length) {
+        ind = 0;
+    } else {
+        return function () {alert('noClinicIds');};
+    }
+    return function(){
+        var nextId = ids[ind];
+        if (nextId > 0) {
+            loadClinicInfo(nextId);
+        }
+        ind ++;
+    };
+}

@@ -37,6 +37,8 @@ Yii::app()->getClientScript()->registerCssFile(Yii::app()->baseUrl.'/css/widget_
 Yii::app()->getClientScript()->registerCssFile(Yii::app()->baseUrl.'/css/vk_lite.css');
 Yii::app()->getClientScript()->registerCssFile(Yii::app()->baseUrl.'/css/vk_page.css');
 
+//smoothClinicsCarousel
+Yii::app() -> getClientScript() -> registerPackage('smoothDivScroll');
 Yii::app() -> ClientScript -> registerScript('countDown',"
 var clock;
 clock = $('#clock').FlipClock({
@@ -60,35 +62,12 @@ clock.setCountdown(true);
 clock.start();
 ",CClientScript::POS_READY);
 
-Yii::app() -> getClientScript() -> registerScript('clinicsCarusel','
-    var clinicsIds = '.json_encode(array_map(function ($clinic){
-        return $clinic -> id;
-    },$clinics_to_map)).';
-    var nextId = 0;
-    loadClinicInfo(clinicsIds[nextId]);
-    function nextClinic() {
-        nextId++;
-        nextId=nextId%clinicsIds.length;
-        loadClinicInfo(clinicsIds[nextId]);
-    }
-    function previousClinic() {
-        nextId--;
-        nextId=(nextId + clinicsIds.length)%clinicsIds.length;
-        loadClinicInfo(clinicsIds[nextId]);
-    }
-    var clinicsCarusel = setInterval(nextClinic,17000);
+Yii::app() -> getClientScript() -> registerScript('clinicsCarousel',"
+    $('#clinicsCarousel').smoothDivScroll({
 
-    $("#clinicsSliderNext").click(function() {
-        nextClinic();
-        clearInterval(clinicsCarusel);
     });
+",CClientScript::POS_READY);
 
-    $("#clinicsSliderPrev").click(function() {
-        previousClinic();
-        clearInterval(clinicsCarusel);
-    });
-
-',CClientScript::POS_READY);
 Yii::app() -> getClientScript() -> registerScript('bigScriptOnLoad','
 $(".your-phone").mask("+7(999)999-99-99");
 ', CClientScript::POS_READY);
@@ -562,21 +541,29 @@ Yii::app() -> getClientScript() -> registerScript('defaultPositions','
                                     <?php CustomFlash::showFlashes(); ?>
                                 </div>
 
-                                <span class="clinicSliderArrow" id="clinicsSliderPrev"><i class="fa fa-angle-left"></i></span>
-                                <span class="clinicSliderArrow" id="clinicsSliderNext"><i class="fa fa-angle-right"></i></span>
+                                <!--<span class="clinicSliderArrow" id="clinicsSliderPrev"><i class="fa fa-angle-left"></i></span>
+                                <span class="clinicSliderArrow" id="clinicsSliderNext"><i class="fa fa-angle-right"></i></span>-->
 								<p>&nbsp;</p>
                                 <p class="left-images-block-header">
                                     Кликните на указатель на карте, чтобы посмотреть информацию о выбранной клинике!
                                 </p>
 								<p>&nbsp;</p>
-                                <div id="clinicChangeableContainer" style="height:400px; overflow:auto;" class="col-md-12">
+                                <div id="clinicChangeableContainer" class="col-md-12">
 
-                                    <div id="topClinicContainer" class="col-md-12">
-                                    </div>
+                                    <!--<div id="topClinicContainer" class="col-md-12">
+                                    </div>-->
+
                                     <!--<div id="bottomClinicContainer" class="col-md-12">
                                     </div>-->
                                 </div>
-
+                                <div class="clear" ></div>
+                                <div id="clinicsCarousel" style="position:relative;">
+                                    <?php
+                                        foreach ($clinics_to_map as $cl) {
+                                            $this -> renderPartial("//landingLike/clinicsViewForScroller", ['model' => $cl]);
+                                        }
+                                    ?>
+                                </div>
                                 <div class="clear" ></div>
                                 <div id="reviews" style="margin-top:-25px"></div>
                             </div>

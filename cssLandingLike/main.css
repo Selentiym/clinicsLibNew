@@ -1784,3 +1784,12 @@ QUICK JUMP TO CATALOG
 .hidden {
 	display: none;
 }
+
+div.scrollableArea  > div {
+	position: relative;
+	display: inline-block;
+	width:700px;
+	float: left;
+	margin: 0;
+	padding: 0;
+}

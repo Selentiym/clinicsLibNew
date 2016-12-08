@@ -279,13 +279,32 @@ return array(
 			//'cookieMode' => 'only',
 			'timeout' => 300
 		)*/
-        /*
+
         'clientScript' => array(
             'defaultScriptPosition' => CClientScript::POS_END,
             'defaultScriptFilePosition' => CClientScript::POS_END,
             'coreScriptPosition' => CClientScript::POS_HEAD,
+			'packages' => [
+				'jquery' => [
+					'baseUrl' => '',
+					'js' => ['jsLandingLike/jquery-1.11.1.min.js']
+				],
+				'smoothDivScroll' => [
+						'baseUrl' => 'libsLandingLike/smoothDivScroll/',
+					'js' => [
+						'js/jquery.kinetic.min.js',
+						'js/jquery.mousewheel.min.js',
+						'js/jquery-ui-1.10.3.custom.min.js',
+						'js/jquery.smoothdivscroll-1.3-min.js',
+					],
+					'css' => [
+						'css/smoothDivScroll.css'
+					],
+					'depends' => ['jquery']
+				]
+			]
         ),
-        */
+
 	),
 	// application-level parameters that can be accessed
 	// using Yii::app()->params['paramName']
