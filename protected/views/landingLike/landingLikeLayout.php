@@ -8,7 +8,7 @@
 
 $base = Yii::app() -> baseUrl;
 
-$clinics_to_map = clinics::model() -> findAllByAttributes(['ignore_clinic' => '0', 'partner' => '1']);
+$clinics_to_map = $this -> giveClinics();
 
 Yii::app() -> getClientScript() -> registerScript('defineBase','
     baseUrl="'.$base.'";
@@ -63,9 +63,27 @@ clock.start();
 ",CClientScript::POS_READY);
 
 Yii::app() -> getClientScript() -> registerScript('clinicsCarousel',"
-    $('#clinicsCarousel').smoothDivScroll({
+    var ajaxClinicsFactory = clinicsAddNextClosureFactory(".json_encode(array_map(function($c){return $c -> id;},$clinics_to_map)).");
 
+    var clinicsCarousel = $('#clinicsCarousel').smoothDivScroll({
+        autoScrollingMode: 'onStart',
+        autoScrollingStep: 2,
+        autoScrollingInterval: 100,
+        getContentOnLoad: {
+            method: 'getAjaxContent',
+            content: baseUrl + '/home/ClinicsCarouselData',
+            manipulationMethod: 'replace',
+        }
     });
+	clinicsCarousel.bind('mouseover', function() {
+		$(this).smoothDivScroll('stopAutoScrolling');
+	}).bind('mouseout', function() {
+		$(this).smoothDivScroll('startAutoScrolling');
+	});
+    function onClinicSelected(id) {
+        clinicsCarousel.smoothDivScroll('stopAutoScrolling');
+        clinicsCarousel.smoothDivScroll('scrollToElement','id','clinicsScroll' + id);
+    }
 ",CClientScript::POS_READY);
 
 Yii::app() -> getClientScript() -> registerScript('bigScriptOnLoad','
@@ -147,8 +165,7 @@ Yii::app() -> getClientScript() -> registerScript('defaultPositions','
             ];
             $toAdd .= "{$clinic -> verbiage} = new ymaps.Placemark( [{$clinic -> map_coordinates}] , ".json_encode($temp).");";
             $toAdd .= $clinic -> verbiage.".events.add('click', function(e) {
-                                                    clearInterval(clinicsCarusel);
-                                                    loadClinicInfo($clinic->id);
+                                                    onClinicsSlected($clinic->id);
                                                     //Переходим к большой карте
 		                                            $('body,html').animate({scrollTop: $('#clinicChangeableContainer').offset().top - 200}, 1500);
                                                 });";
@@ -507,8 +524,7 @@ Yii::app() -> getClientScript() -> registerScript('defaultPositions','
                                             ];
                                             $toAdd .= "{$clinic -> verbiage} = new ymaps.Placemark( [{$clinic -> map_coordinates}] , ".json_encode($temp).");";
                                             $toAdd .= $clinic -> verbiage.".events.add('click', function(e) {
-                                                clearInterval(clinicsCarusel);
-                                                loadClinicInfo($clinic->id);
+                                                onClinicSelected($clinic->id);
                                             });";
                                             $toAdd .= "window.allClinicsMapBig.geoObjects.add({$clinic -> verbiage});";
                                         }
@@ -558,11 +574,7 @@ Yii::app() -> getClientScript() -> registerScript('defaultPositions','
                                 </div>
                                 <div class="clear" ></div>
                                 <div id="clinicsCarousel" style="position:relative;">
-                                    <?php
-                                        foreach ($clinics_to_map as $cl) {
-                                            $this -> renderPartial("//landingLike/clinicsViewForScroller", ['model' => $cl]);
-                                        }
-                                    ?>
+
                                 </div>
                                 <div class="clear" ></div>
                                 <div id="reviews" style="margin-top:-25px"></div>

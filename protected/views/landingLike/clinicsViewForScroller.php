@@ -6,7 +6,7 @@
  * Time: 19:44
  */
 ?>
-<div>
+<div id="<?php echo "clinicsScroll".$model -> id; ?>">
 <div class="clinic-h1"><img alt="<?php echo $model -> name; ?>" src="<?php echo $model->giveImageFolderRelativeUrl().$model->logo; ?>"><h1><?php echo $model -> name; ?></h1></div>
 <div class="row">
     <div class="col-md-12">

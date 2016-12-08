@@ -881,6 +881,16 @@ class HomeController extends Controller
 	public function actionGetClinicBottomInfo($id){
 		$this -> renderPartial("//landingLike/clinicsBottom", ['model' => clinics::model() -> findByPk($id)], null,true);
 	}
+	public function actionClinicsCarouselData(){
+		if (Yii::app() -> getRequest() -> isAjaxRequest) {
+			$this->renderPartial('//landingLike/clinicsCarouselData');
+		} else {
+			echo "ajax only";
+		}
+	}
+	public function giveClinics(){
+		return clinics::model() -> findAllByAttributes(['ignore_clinic' => '0', 'partner' => '1']);
+	}
 	public function actionAddNewVk(){
 
 		if ($review = Comments::model() -> findByPk($_POST["reviewId"])) {
