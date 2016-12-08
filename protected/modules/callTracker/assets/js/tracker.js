@@ -3,7 +3,6 @@
  * @require jQuery
  */
 //Дефолтная цена цели
-var price = 200;
 function bind(func, context) {
     return function() {
         return func.apply(context, arguments);
@@ -60,8 +59,9 @@ function NoMatterWhatSend(url, delay, callback, dataCallback){
 }
 $(document).ready(function(){
     function reachCallGoal (price) {
+        //price = callTrackerJS.price;
         if (!price) {
-            price = 100;
+            price = 250;
         }
         if (callTrackerJS.traceGoal) {
             if (yaCounter40204894) {
@@ -91,8 +91,12 @@ $(document).ready(function(){
             if ((returned)||(stagnation > 5)) {
                 returned = 0;
                 $.post(baseUrl + '/' + moduleId + '/CT/CallStatus', {id_enter: callTrackerJS.id_enter}, null, "JSON").done(function (data) {
+                    var price = callTrackerJS.price;
+                    if (!price) {
+                        price = 250;
+                    }
                     if (data.called == 1) {
-                        reachCallGoal();
+                        reachCallGoal(price);
                     }
                     stagnation = 0;
                     returned = 1;

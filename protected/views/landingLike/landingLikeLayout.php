@@ -116,8 +116,9 @@ $("form").not(".ordinary").submit(function(e){
 
     $.post(baseUrl+"/post",$(this).serialize()).done(function(date){
             alert("Ваша заявка успешно принята!");
+            price = callTrackerJS.price;
             if (!price) {
-                price = 100;
+                price = 250;
             }
             if (yaCounter40204894) {
                 yaCounter40204894.reachGoal("formSubmit", {

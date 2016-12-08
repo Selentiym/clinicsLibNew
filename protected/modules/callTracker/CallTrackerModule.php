@@ -1,6 +1,7 @@
 <?php
 class CallTrackerModule extends \CWebModule
 {
+	const targetPrice = 301;
 	/**
 	 * @var callable $afterImport
 	 */
@@ -126,6 +127,7 @@ class CallTrackerModule extends \CWebModule
 				callTrackerJS.id_enter = '.$this -> enter -> id.';
 				callTrackerJS.delay = '.self::requestDelay.';
 				callTrackerJS.traceGoal = '.$trace.';
+				callTrackerJS.price = '.self::targetPrice.';
 			',CClientScript::POS_BEGIN);
 			Yii::app() -> getClientScript() -> registerScriptFile($url, CClientScript::POS_END);
 		}
