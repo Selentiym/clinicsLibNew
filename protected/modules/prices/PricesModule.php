@@ -35,7 +35,7 @@ class PricesModule extends CWebModule
 				array_unshift($blocks, $block);
 			}
 		}
-		$highlight = array_reverse(CHtml::giveAttributeArray($this -> rule -> prices, 'id'));
+		$highlight = CHtml::giveAttributeArray($this -> rule -> prices, 'id');
 		//Теперь перемещаем цены внутри блоков
 		foreach ($blocks as $block) {
 			$prices_initial = $block->prices;
