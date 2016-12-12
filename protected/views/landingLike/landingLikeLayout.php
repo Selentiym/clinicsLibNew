@@ -442,7 +442,7 @@ Yii::app() -> getClientScript() -> registerScript('defaultPositions','
                                 <h2>Самые горячие предложения по СПБ</h2>
 								<div class="discount-inner">
                                     <div class="row" id="travm">
-                                        <div class="discount-name col-md-5 col-sm-4 col-xs-12">Консультация НЕВРОЛОГА</div>
+                                        <div id="real-nevr" class="discount-name col-md-5 col-sm-4 col-xs-12">Консультация НЕВРОЛОГА</div>
                                         <div class="discount-price col-md-4 col-sm-4 col-xs-6">
                                             <span class="new-price">БЕСПЛАТНО</span>
                                         </div>
@@ -456,7 +456,7 @@ Yii::app() -> getClientScript() -> registerScript('defaultPositions','
                                 </div>
 								<div class="discount-inner">
                                     <div class="row">
-                                        <div class="discount-name col-md-5 col-sm-4 col-xs-12">Консультация ТРАВМАТОЛОГА</div>
+                                        <div id="real-travm" class="discount-name col-md-5 col-sm-4 col-xs-12">Консультация ТРАВМАТОЛОГА</div>
                                         <div class="discount-price col-md-4 col-sm-4 col-xs-6">
                                             <span class="new-price">БЕСПЛАТНО</span>
                                         </div>

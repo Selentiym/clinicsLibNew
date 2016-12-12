@@ -524,17 +524,24 @@ class HomeController extends Controller
 			'clinics' => 'centers',
 			'reviews' => 'reviews',
 			'prices' => 'prices',
-			'discount' => 'hot-offers',
-			'faq' => 'faq'
+			'discount' => 'real-nevr',
+			'faq' => 'real-travm',
+			'bigMap' => 'centers',
 		];
 		$anchor = $vars[$seed];
 		if ($anchor) {
 			Yii::app() -> getClientScript() -> registerScript('scroll','
-				top = $("#'.$anchor.'").offset().top - 150;
-				if (top) {
-					$("body,html").animate({scrollTop: top}, 300);
+				setTimeout(function(){
+				var top;
+				var el = $("#'.$anchor.'");
+				if (el.length) {
+					top = el.offset().top - 170;
+					if (top*1) {
+						$("body,html").animate({scrollTop: top}, 900);
+					}
 				}
-			',CClientScript::POS_END);
+				},3000);
+			',CClientScript::POS_READY);
 		}
 		$this -> renderPartial('//landingLike/landingLikeLayout',null,null,true);
 	}
