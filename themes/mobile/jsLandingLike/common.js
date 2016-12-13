@@ -10,15 +10,27 @@ function getCorrespondingEl($tab){
     return false;
 }
 $('body').on('click','.mine_tab',function(){
+
+    var toOpen = getCorrespondingEl($(this));
+    var needsOpening = true;
+    if (toOpen) {
+        if (toOpen.hasClass('mine_tab_opened')) {
+            needsOpening = false;
+        }
+    } else {
+        needsOpening = false;
+    }
+    //Прячем блоки
     $(this).parent().find('.mine_tab').each(function(key,el){
         var toClose = getCorrespondingEl($(el));
         if (toClose) {
             toClose.hide();
+            toClose.removeClass('mine_tab_opened');
         }
     });
-    var toOpen = getCorrespondingEl($(this));
-    if (toOpen) {
+    if (needsOpening) {
         toOpen.show();
+        toOpen.addClass('mine_tab_opened');
     }
 });
 function sendVkLoginRequest() {
