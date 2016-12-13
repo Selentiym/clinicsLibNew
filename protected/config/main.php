@@ -41,6 +41,7 @@ return array(
 
 		'tracker' =>[
 			'class' => 'application.modules.callTracker.CallTrackerModule',
+			'blocked' => true,
 			'formatNumber' => function($number){
 				//asd;
 				$number = preg_replace('/[^\d]/','',$number);

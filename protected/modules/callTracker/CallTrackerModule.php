@@ -3,6 +3,10 @@ class CallTrackerModule extends \CWebModule
 {
 	const targetPrice = 301;
 	/**
+	 * @var bool $blocked
+	 */
+	public $blocked = false;
+	/**
 	 * @var callable $afterImport
 	 */
 	public $afterImport;
@@ -70,10 +74,24 @@ class CallTrackerModule extends \CWebModule
 		//Пытаемся найти заход
 		$enter = $this -> lookForEnter();
 
-		$enter = $enter -> collectDataFromRequest();
+		if ($this -> blocked) {
 
-		$num = $enter -> obtainNumber();
+			/**
+			 * Temporary block
+			 */
+			$num = new phNumber();
+			$num->id = -1;
+			$num->number = 78122411058;
+			$num->short_number = 2411058;
+			$enter -> setNumber($num);
+			/**
+			 * end of temporary block
+			 */
+		} else {
+			$enter = $enter->collectDataFromRequest();
 
+			$num = $enter->obtainNumber();
+		}
 		$this -> enter = $enter;
 
 		//Сохраняем заход
