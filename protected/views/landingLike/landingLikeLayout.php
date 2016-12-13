@@ -67,8 +67,8 @@ Yii::app() -> getClientScript() -> registerScript('clinicsCarousel',"
 
     var clinicsCarousel = $('#clinicsCarousel').smoothDivScroll({
         autoScrollingMode: 'onStart',
-        autoScrollingStep: 2,
-        autoScrollingInterval: 100,
+        autoScrollingStep: 1.5,
+        autoScrollingInterval: 15,
         getContentOnLoad: {
             method: 'getAjaxContent',
             content: baseUrl + '/home/ClinicsCarouselData',
