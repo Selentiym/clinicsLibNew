@@ -186,4 +186,7 @@
 	.media-screen #collapse .btn-primary.last {
 		float:none;
 	}
+	.media-screen #collapse .tab_container table tr.active-price .price-name {
+		background-image:none !important;
+	}
 }

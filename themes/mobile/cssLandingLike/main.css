@@ -966,7 +966,7 @@ ONE CLINIC PAGE
 .clinic-page .left-images-block a:hover{
     color: #ec1400;
 }
-.clinic-page .prices table{
+table{
 	width:100%;
 }
 .clinic-page .prices table th {
@@ -1472,18 +1472,18 @@ html ul.tabs li.active, html ul.tabs li.active a:hover  {
 	padding:5px 0;
 	vertical-align:bottom;
 }
-.clinic-page .prices .tab_container table tr.padding-top td {
-	padding-top:20px;
-}
 .clinic-page .prices .tab_container table tr {
 	background:#ffffff;
 }
 .clinic-page .prices .tab_container table tr td {
 	border:none;
 }
+.clinic-page .prices .tab_container table tr.padding-top td {
+	padding-top:20px;
+}
 .clinic-page .prices .tab_container table td.price-name {
     vertical-align: bottom;
-		background: url(../imgLandingLike/tbl-dot.png) repeat-x 100% 90%;
+	background: url(../imgLandingLike/tbl-dot.png) repeat-x 100% 90%;
 }
 .clinic-page .prices .tab_container  table td.price-name span {
     background: #ffffff;
@@ -1761,7 +1761,6 @@ footer span{
 /*
 QUICK JUMP TO CATALOG
 */
-
 .quick-jump{
     position: fixed;
     right: 10px;
@@ -1779,8 +1778,27 @@ QUICK JUMP TO CATALOG
 .quick-jump:hover{
 	color:#013d71;
 }
-
-
 .hidden {
 	display: none;
+}
+/*
+STYLES FOR PRICE LINE
+*/
+.media-screen #collapse .tab_container table tr.active-price  td {
+    padding: 7px 0 !important;
+}
+.media-screen #collapse .tab_container table tr.active-price {
+	background:#f7f7f3;
+}
+.media-screen #collapse .tab_container table tr.active-price .price-name span {
+    background: #f7f7f3;
+	padding-bottom: 7px;
+}
+.media-screen #collapse .tab_container table tr.active-price .price-name {
+	background:url(../imgLandingLike/price.png) no-repeat center right,
+	url(../imgLandingLike/tbl-dot.png) repeat-x bottom;
+	font-weight:bold;
+}
+.media-screen #collapse .tab_container table tr.active-price .price-new {
+	color:#8bc944;
 }

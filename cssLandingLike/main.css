@@ -1472,18 +1472,18 @@ html ul.tabs li.active, html ul.tabs li.active a:hover  {
 	padding:5px 0;
 	vertical-align:bottom;
 }
-.clinic-page .prices .tab_container table tr.padding-top td {
-	padding-top:20px;
-}
 .clinic-page .prices .tab_container table tr {
 	background:#ffffff;
 }
 .clinic-page .prices .tab_container table tr td {
 	border:none;
 }
+.clinic-page .prices .tab_container table tr.padding-top td {
+	padding-top:20px;
+}
 .clinic-page .prices .tab_container table td.price-name {
     vertical-align: bottom;
-		background: url(../imgLandingLike/tbl-dot.png) repeat-x 100% 90%;
+	background: url(../imgLandingLike/tbl-dot.png) repeat-x 100% 90%;
 }
 .clinic-page .prices .tab_container  table td.price-name span {
     background: #ffffff;
@@ -1714,7 +1714,6 @@ CALLCENTER PHONE, CALLCENTER FORM
     background: #448bc9;
 	border-radius:5px 5px 0 0;
 }
-
 .order-form input{
     display: inline-block;
     width: 100%;
@@ -1779,8 +1778,6 @@ QUICK JUMP TO CATALOG
 .quick-jump:hover{
 	color:#013d71;
 }
-
-
 .hidden {
 	display: none;
 }
@@ -1792,4 +1789,25 @@ div.scrollableArea  > div {
 	float: left;
 	margin: 0;
 	padding: 0;
+}
+/*
+STYLES FOR PRICE LINE
+*/
+.clinic-page .prices .tab_container table tr.active-price  td {
+    padding: 7px 0;
+}
+.clinic-page .prices .tab_container table tr.active-price {
+	background:#f7f7f3;
+}
+.clinic-page .prices .tab_container table tr.active-price .price-name span {
+    background: #f7f7f3;
+	padding-bottom: 7px;
+}
+.clinic-page .prices .tab_container table tr.active-price .price-name {
+	background:url(../imgLandingLike/price.png) no-repeat center right,
+	url(../imgLandingLike/tbl-dot.png) repeat-x bottom;
+	font-weight:bold;
+}
+.clinic-page .prices .tab_container table tr.active-price .price-new {
+	color:#8bc944;
 }

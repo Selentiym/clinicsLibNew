@@ -179,6 +179,9 @@
 	.clinic-h1 {
 		height:auto;
 	}
+	.clinic-page .prices .tab_container table tr.active-price .price-name {
+		background-image:none;
+	}
 	.advantages .col-md-3 {
 		width:30%;
 	}
