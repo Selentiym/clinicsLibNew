@@ -1811,3 +1811,6 @@ STYLES FOR PRICE LINE
 .clinic-page .prices .tab_container table tr.active-price .price-new {
 	color:#8bc944;
 }
+.formable {
+	cursor:pointer;
+}

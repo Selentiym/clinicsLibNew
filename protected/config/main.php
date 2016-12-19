@@ -292,6 +292,15 @@ return array(
 					'baseUrl' => '',
 					'js' => ['jsLandingLike/jquery-1.11.1.min.js']
 				],
+				'simplePopup' => [
+					'baseUrl' => 'libsLandingLike/simplePopup/',
+					'js' => [
+						'script.js'
+					],
+					'css' => [
+						'styles.css'
+					]
+				],
 				'smoothDivScroll' => [
 						'baseUrl' => 'libsLandingLike/smoothDivScroll/',
 					'js' => [

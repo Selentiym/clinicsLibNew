@@ -1,8 +1,79 @@
-$(document).ready(function(){
+var $regForm;
+function getForm() {
+	if (!$regForm) {
+		$regForm = $("#callback-registration");
+	}
+	return $regForm;
+}
+function customPopup(text){
+	var form = getForm();
+	if (!text) {
+		popup();
+	} else {
+		form.find('.variable').html(text);
+		popup(form);
+	}
+}
+var priceFromAttrName = 'data-price';
+function pricePopup($el) {
+	var price = $el.parents().add($el).filter("["+priceFromAttrName+"]").attr(priceFromAttrName);
+	if (price) {
+		var cont = $("<span>");
+		cont.append($("<p>").append("Специалист-диагност поможет Вам выбрать исследование '" + price + "' в удобном для Вас месте по оптимальной цене."));
+		cont.append($("<p>").append("Наш специалист перезвонит Вам в течение 5 минут!"));
+		cont.append($("<p>").append("Консультация абсолютно бесплатна, ответим на любые вопросы по МРТ/КТ тематике."));
+		customPopup(cont);
+	} else {
+		textPopup($el);
+	}
+}
+var defaultFormText = $("<span>").append($("<p>").append("Вам перезвонят в течение 5 минут!"))
+		.append($("<p>").append("Специалист-диагност подберет Вам подходящую клинику и наилучшую цену, а также запишет на обследование в удобное для Вас время."))
+		.append($("<p>").append("Ответит на все вопросы, связанные с МРТ и КТ диагностикой."));
+var formTextAttrName = 'data-form-text';
+function textPopup($el){
+	var textHolder = $el.parents().add($el).filter("["+formTextAttrName+"]");
+	var text = textHolder.attr(formTextAttrName);
+	if (!text) {
+		text = defaultFormText;
+	} else {
+		text = $("<p>").append(text);
+	}
+	customPopup(text);
+}
+function consultTextPopup($el) {
+	customPopup("<p>При прохождении обследования в нашей клинике, Вы получаете консультацию врача бесплатно.</p><p>Специалист расшифрует для Вас полученное изображение и назначит соответсвующее лечение, в случае, конечно, если оно необходимо.</p><p>После заполнения формы Вам в течение 5 минут позвонит наш оператор-консультант, который способен ответить на любые Ваши вопросы.</p>");
+}
+function nightTextPopup($el) {
+	customPopup("<p>Ночью наши цены становятся еще ниже.</p><p>Чтобы не стоять днем в пробках и не брать драгоценный отгул на работе, Вы можете записаться на ночное обследование. Приятным бонусом будет скидка до 50% при ночной процедуре.</p><p>Наш оператор позвонит Вам в течение 5 минут и ответит на все Ваши вопросы.</p>");
+}
+var funcAttrName = 'data-form-func';
+$(document).on("click", ".formable", function(e){
+	var $el = $(e.target);
+	var definer = $el.parents().add($el).find("["+funcAttrName+"]");
+	var func = definer.attr(funcAttrName);
+	if (!$el.length) {
+		console.log('no element found!');
+		return;
+	}
+	if (typeof window[func] == 'function') {
+		window[func]($el);
+	} else {
+		textPopup($el);
+	}
+	return false;
+});
+/*$(document).on("click","a[href='#callback-registration']", function(e){
 
+});*/
+$(document).ready(function(){
 	//Попап менеджер FancyBox
 	//Документация: http://fancybox.net/howto
-	$(".fancybox").fancybox();
+	//$(".fancybox").fancybox();
+
+	$("#form-button").click(function(){
+		customPopup('asd <br/>asd<br/>asd<br/>asd<br/>asd<br/>asd<br/>asd<br/>asd<br/>asd<br/>asd<br/>asd<br/>asd<br/>asd<br/>asd<br/>asd<br/>asd<br/>asd<br/>asd<br/>asd<br/>asd<br/>asd<br/>asd<br/>asd<br/>asd<br/>asd<br/>asd<br/>asd<br/>asd');
+	});
 
 	//doctors slider
 	var owl2 = $(".carousel-doctors");

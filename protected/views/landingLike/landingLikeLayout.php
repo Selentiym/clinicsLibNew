@@ -39,6 +39,7 @@ Yii::app()->getClientScript()->registerCssFile(Yii::app()->baseUrl.'/css/vk_page
 
 //smoothClinicsCarousel
 Yii::app() -> getClientScript() -> registerPackage('smoothDivScroll');
+Yii::app() -> getClientScript() -> registerPackage('simplePopup');
 Yii::app() -> ClientScript -> registerScript('countDown',"
 var clock;
 clock = $('#clock').FlipClock({
@@ -188,7 +189,7 @@ Yii::app() -> getClientScript() -> registerScript('defaultPositions','
 ?>
 
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="ru" data-form-func="textPopup">
 <head>
     <meta charset="utf-8" />
     <title>Самая крупная сеть МРТ и КТ диагностических центров в СПб</title>
@@ -249,14 +250,14 @@ Yii::app() -> getClientScript() -> registerScript('defaultPositions','
             <nav class="col-md-8 col-xs-3 main_menu clearfix">
                 <button class="main_mnu_button hidden-md hidden-lg"><i class="fa fa-bars"></i></button>
                 <ul>
-                    <li class="discount-sale top-phone"><a class="fancybox" href="#callback-registration" target="_blank"><img alt="Записаться" src="<?php echo $base; ?>/imgLandingLike/top-phone.png">Запись <br /> на МРТ и КТ
+                    <li class="discount-sale top-phone formable"><a class="fancybox" href="#callback-registration" target="_blank"><img alt="Записаться" src="<?php echo $base; ?>/imgLandingLike/top-phone.png">Запись <br /> на МРТ и КТ
                             <span class="menu-desc">24 часа!</span>
                         </a>
                     </li>
                     <li class="discount-sale"><a href="#hot-offers"><span class="menu-title"><i class="fa fa-percent" aria-hidden="true"></i><img alt="" src="<?php echo $base; ?>/imgLandingLike/percent.png">Самые горячие<br /> предложения по СПб</span><span class="menu-desc">Скидки и Акции</span></a></li>
                     <li class="our-centers"><a href="#centers"><span class="menu-title">Наши <br />Центры</span></a></li>
                     <li class="our-prices"><a href="#prices"><span class="menu-title">Наши<br /> Цены</span></a></li>
-                    <li class="our-phone"><a href="#callback-registration" class="order fancybox"><span class="menu-title"><?php echo CallTrackerModule::getFormattedNumber();?></span>
+                    <li class="our-phone"><a href="#callback-registration" id="form-button" class="order fancybox"><span class="menu-title"><?php echo CallTrackerModule::getFormattedNumber();?></span>
                             <img src="<?php echo $base; ?>/imgLandingLike/phone-sm.png" alt="" /><span class="menu-desc">Заказать обратный звонок</span></a>
                     </li>
                 </ul>
@@ -301,7 +302,7 @@ Yii::app() -> getClientScript() -> registerScript('defaultPositions','
                 <div class="banner" id="oborud">
                     <h2>ОБОРУДОВАНИЕ</h2>
                     <!--Баннер 1-->
-                    <div class="left-images-block">
+                    <div class="left-images-block formable" data-form-text="<p>Аппарат 3 Тесла позволяет получить значительно более четкую картину, чем стандартный 1,5 Тесла, но немногие клиники им оснащены.</p> <p>У нас Вы сможете получить высокое качество по доступной цене.</p> <p>Наш специалист-диагност перезвонит Вам в течение 5 минут. Он может и с радостью ответит на все интересующие Вас вопросы.</p>">
                         <a href="#">
                             <div>
                                 <p>
@@ -314,7 +315,7 @@ Yii::app() -> getClientScript() -> registerScript('defaultPositions','
                     </div>
 
                     <!--Баннер 2-->
-                    <div class="left-images-block">
+                    <div class="left-images-block formable" data-form-text="<p>Аппарат полуоткрытого типа - золотая середина между мощными аппаратами закрытого типа и комфортными аппаратами открытого типа. Вы получаете качественный результат с повышенным комфортом.</p><p>Если Вы хотите поподробнее узнать про механизм проведения исследований, заполните форму, и наш специалист-консультант свяжется с Вами в течение 5 минут! Он даст ответ на любые Ваши вопросы.</p><p>Консультация абсолютно бесплатна, и мы всегда рады Вас слышать.</p>">
                         <a href="#">
                             <div>
                                 <p><span>МРТ томографы 1.5 Тл, полуоткрытого типа -</span><br />
@@ -326,7 +327,7 @@ Yii::app() -> getClientScript() -> registerScript('defaultPositions','
                     </div>
 
                     <!--Баннер 3-->
-                    <div class="left-images-block">
+                    <div class="left-images-block formable" data-form-text="<p>Если Вы любите повышенный комфорт, то это предложение для Вас!</p><p>У нас Вы можете пройти обследование на аппарате открытого типа, позволяющем получить тот же самый результат, что и на обычном томографе, просто сидя в просторной комнате и занимаясь привычными делами.</p><p>Если Вы хотите поподробнее узнать про механизм проведения исследований, заполните форму, и наш специалист-консультант свяжется с Вами в течение 5 минут! Он даст ответ на любые Ваши вопросы.</p><p>Консультация абсолютно бесплатна, и мы всегда рады Вас слышать.</p>">
                         <a href="#">
                             <div>
                                 <p><span>МРТ аппарат открытого типа -</span>
@@ -381,19 +382,19 @@ Yii::app() -> getClientScript() -> registerScript('defaultPositions','
             <div id="content" class="clinic-page">
                 <div class="line"></div>
                 <div class="row advantages">
-                    <div class="col-md-3">
+                    <div class="col-md-3 formable" data-form-text="<p>Результат в течение суток. Подберем удобную Вам клинику, которая готова провести обследование уже сегодня!</p><p>Наш специалист-диагност позвонит Вам в течение 5 минут. Он готов как сразу записать Вас на подходящую Вам процедуру, так и ответить на все интересующие Вас вопросы.</p>">
                         <img src="<?php echo $base; ?>/imgLandingLike/advantage1.png" alt="" />
                         <span>МРТ и КТ<br /> срочно</span>
                     </div>
-                    <div class="col-md-3">
+                    <div class="col-md-3 formable" data-form-func="nightTextPopup">
                         <img src="<?php echo $base; ?>/imgLandingLike/advantage2.png" alt="" />
                         <span>мрт и кт ночью<br /> скидка 50%</span>
                     </div>
-                    <div class="col-md-3">
+                    <div class="col-md-3 formable" data-form-text="<p>Вам не придется возвращаться за результатом обследования - достаточно немного задержаться после прохождения процедуры: выпить кофе или обсудить свои вопросы с высококвалифицированным специалистом.</p><p>Наш консультант перезвонит Вам в течение пяти минут, чтобы подобрать самое выгодное для Вас предложение, а также чтобы ответить на все возникшие у Вас вопросы.</p>">
                         <img src="<?php echo $base; ?>/imgLandingLike/advantage3.png" alt="" />
                         <span>Результат<br /> за час</span>
                     </div>
-                    <div class="col-md-3">
+                    <div class="col-md-3 formable" data-form-func="consultTextPopup">
                         <img src="<?php echo $base; ?>/imgLandingLike/advantage5.png" alt="" />
 							<span>бесплатная консультация<br /> невролога и травмотолога</span>
                     </div>
@@ -446,7 +447,7 @@ Yii::app() -> getClientScript() -> registerScript('defaultPositions','
                                         <div class="discount-price col-md-4 col-sm-4 col-xs-6">
                                             <span class="new-price">БЕСПЛАТНО</span>
                                         </div>
-                                        <div class="discount-button col-md-3 col-sm-4 col-xs-6"><a class="fancybox to_sign" href="#callback-registration">Записаться</a></div>
+                                        <div class="discount-button col-md-3 col-sm-4 col-xs-6"><a class="fancybox to_sign formable" data-form-func="consultTextPopup" href="#callback-registration">Записаться</a></div>
                                     </div>
                                     <div class="discount-text">
                                         <p>Вы можете посетить бесплатную консультацию невролога до МРТ или КТ исследования, чтобы<br/> уточнить какое обследование
@@ -460,7 +461,7 @@ Yii::app() -> getClientScript() -> registerScript('defaultPositions','
                                         <div class="discount-price col-md-4 col-sm-4 col-xs-6">
                                             <span class="new-price">БЕСПЛАТНО</span>
                                         </div>
-                                        <div class="discount-button col-md-3 col-sm-4 col-xs-6"><a class="fancybox to_sign" href="#callback-registration">Записаться</a></div>
+                                        <div class="discount-button col-md-3 col-sm-4 col-xs-6"><a class="fancybox to_sign formable" data-form-func="consultTextPopup" href="#callback-registration">Записаться</a></div>
                                     </div>
                                     <div class="discount-text">
                                         <p>Вы можете посетить бесплатную консультацию травматолога до МРТ или КТ исследования, чтобы<br/> уточнить какое обследование
@@ -475,7 +476,7 @@ Yii::app() -> getClientScript() -> registerScript('defaultPositions','
                                         <div class="discount-price col-md-4 col-sm-4 col-xs-6">
                                             <span class="new-price">БЕСПЛАТНО</span>
                                         </div>
-                                        <div class="discount-button col-md-3 col-sm-4 col-xs-6"><a class="fancybox to_sign" href="#callback-registration">Записаться</a></div>
+                                        <div class="discount-button col-md-3 col-sm-4 col-xs-6"><a class="fancybox to_sign formable" data-form-func="consultTextPopup" href="#callback-registration">Записаться</a></div>
                                     </div>
                                     <div class="discount-text">
                                         <p>При прохождении МРТ и/или КТ обследования в наших клиниках, <br/>консультация врача-диагноста до и после исследования - бесплатна.</p>
@@ -489,7 +490,7 @@ Yii::app() -> getClientScript() -> registerScript('defaultPositions','
                                         <div class="discount-price col-md-4 col-sm-4 col-xs-6" >
                                             <span class="new-price" id="centru">скидка 50%</span>
                                         </div>
-                                        <div class="discount-button col-md-3 col-sm-4 col-xs-6"><a class="fancybox to_sign" href="#callback-registration">Записаться</a></div>
+                                        <div class="discount-button col-md-3 col-sm-4 col-xs-6"><a class="fancybox to_sign formable" data-form-func="nightTextPopup" href="#callback-registration">Записаться</a></div>
                                     </div>
                                     <div class="discount-text">
                                         <p>Хотите сделать МРТ или КТ по самой лучшей цене в СПб?</p>
@@ -785,9 +786,11 @@ Yii::app() -> getClientScript() -> registerScript('defaultPositions','
 <div class="hidden">
     <form id="callback-registration" class="pop_form">
         <h3>Записаться на МРТ и КТ</h3>
-        <p>Вам перезвонят в течении 5 минут!</p>
-        <p>Специалист-диагност подберет Вам подходящую клинику и наилучшую цену, а также запишет на обследование в удобное для Вас время.</p>
-        <p>Ответит на все вопросы, связанные с МРТ и КТ диагностикой.</p>
+        <span class="variable">
+            <p>Вам перезвонят в течении 5 минут!</p>
+            <p>Специалист-диагност подберет Вам подходящую клинику и наилучшую цену, а также запишет на обследование в удобное для Вас время.</p>
+            <p>Ответит на все вопросы, связанные с МРТ и КТ диагностикой.</p>
+        </span>
         <input type="text" class="your-name" name="name" placeholder="Ваше имя..." required />
         <input type="text" class="your-phone" name="phone" placeholder="Ваше телефон..." required />
         <button class="order-button" name="your-name" value="" type="submit">Записаться</button>
