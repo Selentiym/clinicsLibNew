@@ -794,6 +794,7 @@ Yii::app() -> getClientScript() -> registerScript('defaultPositions','
         <input type="text" class="your-name" name="name" placeholder="Ваше имя..." required />
         <input type="text" class="your-phone" name="phone" placeholder="Ваше телефон..." required />
         <button class="order-button" name="your-name" value="" type="submit">Записаться</button>
+		<a title="Close" class="fancybox-item fancybox-close" href=""></a>
     </form>
 </div>
 

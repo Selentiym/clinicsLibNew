@@ -1,12 +1,21 @@
 .b-container{
-    width:40%;
-    height:80%;
-    margin:10% auto;
-    margin-top:3%;
+	max-width: 532px; 
+	height: auto; 
+	position: absolute; 
+	left: 25%;
+    right: 25%;
+	top:25%;
+	opacity: 1; 
+	overflow: visible;
+    width:auto;
+    margin:0 auto;
     padding:10px 15px;
     background-color: rgb(247, 247, 243);
     border-radius:10px;
     box-shadow: 0px 0px 10px #000;
+}
+.b-container  p {
+	margin:20px 0;
 }
 .b-popup{
     z-index: 1000;
@@ -20,4 +29,15 @@
 .b-popup .b-popup-content{
     max-height:90%;
     overflow:auto;
+}
+@media only screen and (max-width : 992px) { 
+	.b-container{
+		left: 5%;
+		right: 5%;
+	}
+}
+@media only screen and (max-width : 767px) { 
+	.b-container{
+		top:15%;
+	}
 }
