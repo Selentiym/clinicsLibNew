@@ -786,18 +786,19 @@ Yii::app() -> getClientScript() -> registerScript('defaultPositions','
 <div class="hidden">
     <form id="callback-registration" class="pop_form">
         <h3>Записаться на МРТ и КТ</h3>
-        <span class="variable">
-            <p>Вам перезвонят в течении 5 минут!</p>
-            <p>Специалист-диагност подберет Вам подходящую клинику и наилучшую цену, а также запишет на обследование в удобное для Вас время.</p>
-            <p>Ответит на все вопросы, связанные с МРТ и КТ диагностикой.</p>
-        </span>
+        <div class="registradion-block">
+			<span class="variable">
+				<p>Вам перезвонят в течении 5 минут!</p>
+				<p>Специалист-диагност подберет Вам подходящую клинику и наилучшую цену, а также запишет на обследование в удобное для Вас время.</p>
+				<p>Ответит на все вопросы, связанные с МРТ и КТ диагностикой.</p>
+			</span>
+		</div>
         <input type="text" class="your-name" name="name" placeholder="Ваше имя..." required />
         <input type="text" class="your-phone" name="phone" placeholder="Ваше телефон..." required />
         <button class="order-button" name="your-name" value="" type="submit">Записаться</button>
 		<a title="Close" class="fancybox-item fancybox-close" href=""></a>
     </form>
 </div>
-
 
 </body>
 </html>
