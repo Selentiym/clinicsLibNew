@@ -15,7 +15,7 @@ Yii::app() -> getClientScript() -> registerScript('defineBase','
 ',CClientScript::POS_BEGIN);
 Yii::app() -> getClientScript() -> registerScriptFile($base.'/jsLandingLike/jquery-1.11.1.min.js',CClientScript::POS_BEGIN);
 Yii::app() -> getClientScript() -> registerScriptFile($base."/jsLandingLike/jquery.maskedinput.min.js",CClientScript::POS_END);
-Yii::app() -> getClientScript() -> registerScriptFile($base."/fancybox/jquery.fancybox.pack.js",CClientScript::POS_END);
+//Yii::app() -> getClientScript() -> registerScriptFile($base."/fancybox/jquery.fancybox.pack.js",CClientScript::POS_END);
 Yii::app() -> getClientScript() -> registerScriptFile($base."/jsLandingLike/common.js",CClientScript::POS_END);
 Yii::app() -> getClientScript() -> registerScriptFile($base."/jsLandingLike/flipclock.js",CClientScript::POS_END);
 //header scroll scripts
@@ -200,7 +200,7 @@ Yii::app() -> getClientScript() -> registerScript('defaultPositions','
     <link rel="shortcut icon" href="<?php echo $base; ?>/img/favicon.png" />
     <link rel="stylesheet" href="<?php echo $base; ?>/cssLandingLike/bootstrap.min.css" />
     <link rel="stylesheet" href="<?php echo $base; ?>/cssLandingLike/font-awesome.min.css" />
-    <link rel="stylesheet" href="<?php echo $base; ?>/fancybox/jquery.fancybox.css" />
+    <!--<link rel="stylesheet" href="<?php echo $base; ?>/fancybox/jquery.fancybox.css" />-->
     <link rel="stylesheet" href="<?php echo $base; ?>/cssLandingLike/main.css" />
     <link rel="stylesheet" href="<?php echo $base; ?>/cssLandingLike/flipclock.css" />
     <link rel="stylesheet" href="<?php echo $base; ?>/cssLandingLike/media.css" />
@@ -258,7 +258,7 @@ Yii::app() -> getClientScript() -> registerScript('defaultPositions','
                     <li class="our-centers"><a href="#centers"><span class="menu-title">Наши <br />Центры</span></a></li>
                     <li class="our-prices"><a href="#prices"><span class="menu-title">Наши<br /> Цены</span></a></li>
                     <li class="our-phone"><a href="#callback-registration" id="form-button" class="order fancybox"><span class="menu-title"><?php echo CallTrackerModule::getFormattedNumber();?></span>
-                            <img src="<?php echo $base; ?>/imgLandingLike/phone-sm.png" alt="" /><span class="menu-desc">Заказать обратный звонок</span></a>
+                            <img src="<?php echo $base; ?>/imgLandingLike/phone-sm.png" alt="" /><span class="menu-desc formable">Заказать обратный звонок</span></a>
                     </li>
                 </ul>
             </nav>
@@ -787,16 +787,16 @@ Yii::app() -> getClientScript() -> registerScript('defaultPositions','
     <form id="callback-registration" class="pop_form">
         <h3>Записаться на МРТ и КТ</h3>
         <div class="registradion-block">
-			<span class="variable">
+			<div class="variable">
 				<p>Вам перезвонят в течении 5 минут!</p>
 				<p>Специалист-диагност подберет Вам подходящую клинику и наилучшую цену, а также запишет на обследование в удобное для Вас время.</p>
 				<p>Ответит на все вопросы, связанные с МРТ и КТ диагностикой.</p>
-			</span>
+			</div>
 		</div>
         <input type="text" class="your-name" name="name" placeholder="Ваше имя..." required />
         <input type="text" class="your-phone" name="phone" placeholder="Ваше телефон..." required />
         <button class="order-button" name="your-name" value="" type="submit">Записаться</button>
-		<a title="Close" class="fancybox-item fancybox-close" href=""></a>
+		<a title="Close" class="fancybox-item fancybox-close" href="#"></a>
     </form>
 </div>
 

@@ -37,7 +37,16 @@ pw.click(function(e) {
     hidePopup();
 });
 pwInner.click(function (e) {
+    if ($(e.target).hasClass('fancybox-close')) {
+        hidePopup();
+    }
     e.stopPropagation();
+    return false;
+});
+$(document).on('click','.fancybox-close', function(){
+    hidePopup();
+    alert('asd');
+    return false;
 });
 function hidePopup() {
     pw.fadeOut(timeToAnimatePopup);

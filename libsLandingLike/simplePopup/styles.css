@@ -28,7 +28,7 @@
 }
 .registradion-block {
 	max-height: 240px; 
-	overflow-y:scroll;
+	overflow-y:auto;
 	margin-bottom:10px;
 }
 .b-popup .b-popup-content{
@@ -55,4 +55,16 @@
 	.b-container{
 		top:7%;
 	}
+}
+.fancybox-close {
+    position: absolute;
+    top: -18px;
+    right: -18px;
+    width: 36px;
+    height: 36px;
+    cursor: pointer;
+    z-index: 8040;
+}
+#fancybox-loading, .fancybox-close, .fancybox-prev span, .fancybox-next span {
+    background-image: url('fancybox_sprite.png');
 }

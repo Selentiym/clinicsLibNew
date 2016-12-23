@@ -10,13 +10,14 @@ function customPopup(text){
 	if (!text) {
 		popup();
 	} else {
-		form.find('.variable').html(text);
+		var variab = form.find('.variable');
+		variab.html(text);
 		popup(form);
 	}
 }
 var priceFromAttrName = 'data-price';
 function pricePopup($el) {
-	var price = $el.parents().add($el).filter("["+priceFromAttrName+"]").attr(priceFromAttrName);
+	var price = $el.closest("["+priceFromAttrName+"]").attr(priceFromAttrName);
 	if (price) {
 		var cont = $("<span>");
 		cont.append($("<p>").append("Специалист-диагност поможет Вам выбрать исследование '" + price + "' в удобном для Вас месте по оптимальной цене."));
@@ -32,7 +33,7 @@ var defaultFormText = $("<span>").append($("<p>").append("Вам перезво�
 		.append($("<p>").append("Ответит на все вопросы, связанные с МРТ и КТ диагностикой."));
 var formTextAttrName = 'data-form-text';
 function textPopup($el){
-	var textHolder = $el.parents().add($el).filter("["+formTextAttrName+"]");
+	var textHolder = $el.closest("["+formTextAttrName+"]");
 	var text = textHolder.attr(formTextAttrName);
 	if (!text) {
 		text = defaultFormText;
@@ -50,7 +51,7 @@ function nightTextPopup($el) {
 var funcAttrName = 'data-form-func';
 $(document).on("click", ".formable", function(e){
 	var $el = $(e.target);
-	var definer = $el.parents().add($el).find("["+funcAttrName+"]");
+	var definer = $el.closest("["+funcAttrName+"]");
 	var func = definer.attr(funcAttrName);
 	if (!$el.length) {
 		console.log('no element found!');
@@ -70,10 +71,6 @@ $(document).ready(function(){
 	//Попап менеджер FancyBox
 	//Документация: http://fancybox.net/howto
 	//$(".fancybox").fancybox();
-
-	$("#form-button").click(function(){
-		customPopup('asd <br/>asd<br/>asd<br/>asd<br/>asd<br/>asd<br/>asd<br/>asd<br/>asd<br/>asd<br/>asd<br/>asd<br/>asd<br/>asd<br/>asd<br/>asd<br/>asd<br/>asd<br/>asd<br/>asd<br/>asd<br/>asd<br/>asd<br/>asd<br/>asd<br/>asd<br/>asd<br/>asd');
-	});
 
 	//doctors slider
 	var owl2 = $(".carousel-doctors");
