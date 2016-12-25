@@ -62,7 +62,9 @@ class HomeController extends Controller
 			$res = browserInfoHolder::getInstance();
 			if ($res) {
 				if ($res->isMobile() === true) {
-					$theme = 'mobile';
+					$theme = CallTrackerModule::getExperiment() -> getParams()['theme'];
+					//$theme = 'mobile';
+
 				} else {
 					$theme = null;
 					$chosen = true;

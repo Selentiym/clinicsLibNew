@@ -7,6 +7,8 @@
  * @property integer $id
  * @property integer $id_enter
  * @property double $price
+ * @property string $theme
+ * @property bool $isMobile
  * @property string $date
  */
 class GlobalExperiment extends CActiveRecord implements iExperiment {
@@ -32,9 +34,9 @@ class GlobalExperiment extends CActiveRecord implements iExperiment {
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
 			array('id, id_enter, price, date', 'safe', 'on'=>'search'),
-			array('price', 'safe', 'on' => '*'),
+			array('price, theme, isMobile', 'safe'),
 			array('*','unsafe','on' => 'exportParams'),
-			array('price','safe','on' => 'exportParams')
+			array('price, theme, isMobile','safe','on' => 'exportParams')
 		);
 	}
 
@@ -108,8 +110,18 @@ class GlobalExperiment extends CActiveRecord implements iExperiment {
 		if ($this -> getIsNewRecord()) {
 			//$prices = [0.8, 0.9, 1.0];
 			$prices = [1.0];
+			$themes = ['mobile', ''];
+			$res = browserInfoHolder::getInstance();
+			$isMobile = 0;
+			if ($res) {
+				if ($res->isMobile()) {
+					$isMobile = 1;
+				}
+			}
 			$params = [
 				'price' => $prices[array_rand($prices)],
+				'theme' => $themes[array_rand($themes)],
+				'isMobile' => $isMobile
 				//'phone' => $enter -> getNumber() -> getShortNumberString()
 			];
 			$this -> attributes = $params;
@@ -120,7 +132,7 @@ class GlobalExperiment extends CActiveRecord implements iExperiment {
 		}
 	}
 	public function getParams() {
-		return $this -> getAttributes(['price','id_enter']);
+		return $this -> getAttributes(['price','id_enter','theme','isMobile']);
 	}
 	public function getProperty($property) {
 		return $this -> getAttributes()[$property];
