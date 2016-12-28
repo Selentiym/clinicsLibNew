@@ -75,3 +75,15 @@ if( $curl = curl_init() ) {
     //echo $out;
     curl_close($curl);
 }
+//посылаем заявку на новую систему тоже
+if( $curl = curl_init() ) {
+    try {
+        curl_setopt($curl, CURLOPT_URL, 'http://new.web-utils.ru/api/form?' . http_build_query($params));
+        curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+        $out = curl_exec($curl);
+        //echo $out;
+        curl_close($curl);
+    } catch (Exception $e) {
+
+    }
+}
