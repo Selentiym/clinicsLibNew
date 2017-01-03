@@ -257,7 +257,7 @@ Yii::app() -> getClientScript() -> registerScript('defaultPositions','
                 <div id="main-map">
 
                 </div>
-                <div><a class=" to_sign" href="#map">Перейти к большой карте»</a></div>
+                <div><a class=" to_sign" href="#mapLink">Перейти к большой карте»</a></div>
 
                 <div class="line"></div>
 
@@ -475,6 +475,9 @@ Yii::app() -> getClientScript() -> registerScript('defaultPositions','
                                         </div>
                                         <div class="discount-button col-md-3 col-sm-4 col-xs-6"><a class="fancybox to_sign formable" data-form-func="nightTextPopup" href="#callback-registration">Записаться</a></div>
                                     </div>
+                                    <span class="anchorContM">
+                                        <span id="mapLink" class="anchorM"></span>
+                                    </span>
                                     <div class="discount-text">
                                         <p>Хотите сделать МРТ или КТ по самой лучшей цене в СПб?</p>
                                         <p>Ночью действуют скидки на все виды МРТ и КТ обследований!</p>
@@ -537,6 +540,7 @@ Yii::app() -> getClientScript() -> registerScript('defaultPositions','
                                         }
                                         ",CClientScript::POS_READY);
                                     ?>
+
                                     <div id="map" style="width:80%; height:500px; margin:0 auto;">
                                     </div>
                                     <?php CustomFlash::showFlashes(); ?>

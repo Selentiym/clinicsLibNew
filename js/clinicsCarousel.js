@@ -19,6 +19,7 @@ function startClinicsCarousel (w, selectedClinic) {
         }
     };
     if (selectedClinic) {
+        params.startAtElementId = 'clinicsScroll' + selectedClinic;
         params.addedAjaxContent = function() {
             w.onClinicSelected(selectedClinic);
         };
