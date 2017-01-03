@@ -10,6 +10,9 @@ $base = Yii::app() -> baseUrl;
 
 $clinics_to_map = $this -> giveClinics();
 
+$utm = $_REQUEST['utm_term'];
+$selectedClinic = ClinicRule::selectClinic($utm);
+
 Yii::app() -> getClientScript() -> registerScript('defineBase','
     baseUrl="'.$base.'";
 ',CClientScript::POS_BEGIN);
@@ -63,28 +66,10 @@ clock.setCountdown(true);
 clock.start();
 ",CClientScript::POS_READY);
 
-Yii::app() -> getClientScript() -> registerScript('clinicsCarousel',"
-    var ajaxClinicsFactory = clinicsAddNextClosureFactory(".json_encode(array_map(function($c){return $c -> id;},$clinics_to_map)).");
+Yii::app() -> getClientScript() -> registerScriptFile(Yii::app() -> baseUrl.'/js/clinicsCarousel.js', CClientScript::POS_BEGIN);
 
-    var clinicsCarousel = $('#clinicsCarousel').smoothDivScroll({
-        autoScrollingMode: 'onStart',
-        autoScrollingStep: 1.5,
-        autoScrollingInterval: 15,
-        getContentOnLoad: {
-            method: 'getAjaxContent',
-            content: baseUrl + '/home/ClinicsCarouselData',
-            manipulationMethod: 'replace',
-        }
-    });
-	clinicsCarousel.bind('mouseover', function() {
-		$(this).smoothDivScroll('stopAutoScrolling');
-	}).bind('mouseout', function() {
-		$(this).smoothDivScroll('startAutoScrolling');
-	});
-    function onClinicSelected(id) {
-        clinicsCarousel.smoothDivScroll('stopAutoScrolling');
-        clinicsCarousel.smoothDivScroll('scrollToElement','id','clinicsScroll' + id);
-    }
+Yii::app() -> getClientScript() -> registerScript('clinicsCarousel',"
+startClinicsCarousel(window, '".($selectedClinic instanceof clinics ? $selectedClinic -> id : '')."');
 ",CClientScript::POS_READY);
 
 Yii::app() -> getClientScript() -> registerScript('bigScriptOnLoad','
@@ -167,9 +152,7 @@ Yii::app() -> getClientScript() -> registerScript('defaultPositions','
             ];
             $toAdd .= "{$clinic -> verbiage} = new ymaps.Placemark( [{$clinic -> map_coordinates}] , ".json_encode($temp).");";
             $toAdd .= $clinic -> verbiage.".events.add('click', function(e) {
-                                                    onClinicsSlected($clinic->id);
-                                                    //Переходим к большой карте
-		                                            $('body,html').animate({scrollTop: $('#clinicChangeableContainer').offset().top - 200}, 1500);
+                                                    onClinicSelected($clinic->id);
                                                 });";
             $toAdd .= "window.allClinicsMap.geoObjects.add({$clinic -> verbiage});";
         }
