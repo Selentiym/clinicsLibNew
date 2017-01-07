@@ -15,7 +15,7 @@ Yii::app() -> getClientScript() -> registerScript('defineBase','
 ',CClientScript::POS_BEGIN);
 Yii::app() -> getClientScript() -> registerScriptFile($base.'/jsLandingLike/jquery-1.11.1.min.js',CClientScript::POS_BEGIN);
 Yii::app() -> getClientScript() -> registerScriptFile($base."/jsLandingLike/jquery.maskedinput.min.js",CClientScript::POS_END);
-Yii::app() -> getClientScript() -> registerScriptFile($base."/fancybox/jquery.fancybox.pack.js",CClientScript::POS_END);
+Yii::app() -> getClientScript() -> registerScriptFile($baseTheme."/fancybox/jquery.fancybox.pack.js",CClientScript::POS_END);
 Yii::app() -> getClientScript() -> registerScriptFile($baseTheme."/jsLandingLike/common.js",CClientScript::POS_END);
 //header scroll scripts
 Yii::app() -> getClientScript() -> registerScriptFile($base."/jsLandingLike/script.js",CClientScript::POS_END);
@@ -121,7 +121,7 @@ Yii::app() -> getClientScript() -> registerScript('defaultPositions','
     <meta name="viewport" content="width=device-width; initial-scale=0.85; maximum-scale=0.85; user-scalable=0;" />
     <link rel="shortcut icon" href="<?php echo $base; ?>/imgLandingLike/favicon.png" />
     <link rel="stylesheet" href="<?php echo $base; ?>/cssLandingLike/font-awesome.min.css" />
-    <link rel="stylesheet" href="<?php echo $base; ?>/fancybox/jquery.fancybox.css" />
+    <link rel="stylesheet" href="<?php echo $baseTheme; ?>/fancybox/jquery.fancybox.css" />
     <link rel="stylesheet" href="<?php echo $baseTheme; ?>/cssLandingLike/bootstrap.min.css" />
     <link rel="stylesheet" href="<?php echo $baseTheme; ?>/cssLandingLike/main.css" />
     <link rel="stylesheet" href="<?php echo $baseTheme; ?>/cssLandingLike/media.css" />
