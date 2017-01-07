@@ -1,6 +1,6 @@
 .b-container{
 	max-width: 532px; 
-	height: auto; 
+	height: 80%;
 	position: absolute; 
 	left: 25%;
     right: 25%;
@@ -27,12 +27,12 @@
     top:0px;
 }
 .registradion-block {
-	max-height: 240px; 
+	max-height: 70%;
 	overflow-y:auto;
 	margin-bottom:10px;
 }
 .b-popup .b-popup-content{
-    max-height:90%;
+    height:90%;
     overflow:auto;
 }
 @media only screen and (max-width : 1366px) {
