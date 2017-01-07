@@ -1,4 +1,4 @@
-<div id="mrt" class="collapse">
+<div id="mrt" class="collapse mine_tab_opened" style="display: block;">
 	<div class="tab_container">
 	<!--МРТ головы и шеи-->
 	<table>
