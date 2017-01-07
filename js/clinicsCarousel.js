@@ -19,6 +19,13 @@ function startClinicsCarousel (w, selectedClinic) {
         }
     };
     if (selectedClinic) {
+        try {
+            if (window.yaCounter) {
+                window.yaCounter.reachGoal('brandRequest',{
+                    clinicId: selectedClinic
+                });
+            }
+        } catch(err) {}
         params.startAtElementId = 'clinicsScroll' + selectedClinic;
         params.addedAjaxContent = function() {
             w.onClinicSelected(selectedClinic);

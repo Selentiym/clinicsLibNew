@@ -2,6 +2,7 @@ var $regForm;
 function getForm() {
 	if (!$regForm) {
 		$regForm = $("#callback-registration");
+
 	}
 	return $regForm;
 }

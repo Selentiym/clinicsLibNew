@@ -88,6 +88,7 @@ VK.Auth.getLoginStatus(function(data){
 
 Yii::app() -> getClientScript() -> registerScript('sendForms','
 $("form").not(".ordinary").submit(function(e){
+    console.log($(this));
     var toSubmit = $(this).find("[type=\'submit\']");
     toSubmit.attr("disabled",true);
     toSubmit.addClass("loading");
@@ -203,6 +204,7 @@ Yii::app() -> getClientScript() -> registerScript('defaultPositions','
                     webvisor:true,
                     params: yaParams || {}
                 });
+                w.yaCounter = w.yaCounter40204894;
             } catch(e) { }
         });
 
@@ -240,8 +242,8 @@ Yii::app() -> getClientScript() -> registerScript('defaultPositions','
                     <li class="discount-sale"><a href="#hot-offers"><span class="menu-title"><i class="fa fa-percent" aria-hidden="true"></i><img alt="" src="<?php echo $base; ?>/imgLandingLike/percent.png">Самые горячие<br /> предложения по СПб</span><span class="menu-desc">Скидки и Акции</span></a></li>
                     <li class="our-centers"><a href="#centers"><span class="menu-title">Наши <br />Центры</span></a></li>
                     <li class="our-prices"><a href="#prices"><span class="menu-title">Наши<br /> Цены</span></a></li>
-                    <li class="our-phone"><a href="#callback-registration" id="form-button" class="order fancybox"><span class="menu-title"><?php echo CallTrackerModule::getFormattedNumber();?></span>
-                            <img src="<?php echo $base; ?>/imgLandingLike/phone-sm.png" alt="" /><span class="menu-desc formable">Заказать обратный звонок</span></a>
+                    <li class="our-phone formable"><a href="#callback-registration" id="form-button" class="order fancybox"><span class="menu-title"><?php echo CallTrackerModule::getFormattedNumber();?></span>
+                            <img src="<?php echo $base; ?>/imgLandingLike/phone-sm.png" alt="" /><span class="menu-desc">Заказать обратный звонок</span></a>
                     </li>
                 </ul>
             </nav>
@@ -780,9 +782,9 @@ Yii::app() -> getClientScript() -> registerScript('defaultPositions','
 				<p>Ответит на все вопросы, связанные с МРТ и КТ диагностикой.</p>
 			</div>
 		</div>
-        <input type="text" class="your-name" name="name" placeholder="Ваше имя..." required />
-        <input type="text" class="your-phone" name="phone" placeholder="Ваше телефон..." required />
-        <button class="order-button" name="your-name" value="" type="submit">Записаться</button>
+        <input type="text" class="your-name" name="name" placeholder="Ваше имя..."  />
+        <input type="text" class="your-phone" name="phone" placeholder="Ваше телефон..."  />
+        <button class="order-button" name="your-name" value="zap" type="submit">Записаться</button>
 		<a title="Close" class="fancybox-item fancybox-close" href="#"></a>
     </form>
 </div>

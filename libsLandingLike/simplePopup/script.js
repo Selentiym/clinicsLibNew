@@ -41,13 +41,13 @@ pwInner.click(function (e) {
         hidePopup();
     }
     e.stopPropagation();
-    return false;
+    //return false;
 });
-$(document).on('click','.fancybox-close', function(){
+/*$(document).on('click','.fancybox-close', function(){
     hidePopup();
     alert('asd');
     return false;
-});
+});*/
 function hidePopup() {
     pw.fadeOut(timeToAnimatePopup);
 }
