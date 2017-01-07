@@ -51,7 +51,7 @@
                 $i++;
             }
             ?>
-            <a class="fancybox to_sign" href="#callback-registration">Записаться</a>
+            <a class="fancybox to_sign formable" href="#callback-registration">Записаться</a>
         </div>
     </div>
 </div>
