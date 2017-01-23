@@ -30,7 +30,7 @@ $params = array(
     'pid' => -4,
     'name' => $name,
     'phone' => $phone,
-    'description' => 'Заявка с clinicsLib'св
+    'description' => 'Заявка с clinicsLib'
 );
 
 //посылаем заявку к себе
