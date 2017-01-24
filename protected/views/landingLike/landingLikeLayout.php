@@ -199,7 +199,7 @@ Yii::app() -> getClientScript() -> registerScript('defaultPositions','
     ga('create', 'UA-90805348-1', 'auto');
     ga('send', 'pageview');
 
-</script>c
+</script>
 <!-- Yandex.Metrika counter -->
 <script type="text/javascript">
     (function (d, w, c) {
